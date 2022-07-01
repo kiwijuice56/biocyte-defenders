@@ -1,0 +1,150 @@
+[gd_scene load_steps=12 format=3 uid="uid://dv4ua3n1knjx5"]
+
+[ext_resource type="Script" path="res://main/game_map/game_map.gd" id="1_8h8ph"]
+[ext_resource type="PackedScene" uid="uid://bwlk47iwol6sb" path="res://main/game_map/mouse_catcher/MouseCatcher.tscn" id="2_thbn6"]
+[ext_resource type="Texture2D" uid="uid://8cbk23x3iwaq" path="res://icon.png" id="3_h5kku"]
+[ext_resource type="Script" path="res://main/tower_placer.gd" id="3_ntu86"]
+[ext_resource type="Theme" uid="uid://c0spe1bptxwki" path="res://main/ui/GlobalTheme.tres" id="3_oxdkf"]
+[ext_resource type="PackedScene" uid="uid://cac2mjkpfee8r" path="res://main/tower/b_cell/BCell.tscn" id="4_l3v07"]
+[ext_resource type="Script" path="res://main/tower_grid_container.gd" id="4_rsgbh"]
+
+[sub_resource type="Environment" id="Environment_d6ncv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbugh"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.133333, 0.133333, 0.227451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph0nr"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+bg_color = Color(0.247059, 0.262745, 0.388235, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mv03d"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.101961, 0.0823529, 0.145098, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="Main" type="Node"]
+
+[node name="GameMap" type="Node3D" parent="."]
+script = ExtResource( "1_8h8ph" )
+
+[node name="MouseCatcher" parent="GameMap" instance=ExtResource( "2_thbn6" )]
+camera_path = NodePath("../Camera3D")
+
+[node name="TowerPlacer" type="Node3D" parent="GameMap"]
+script = ExtResource( "3_ntu86" )
+mouse_catcher_path = NodePath("../MouseCatcher")
+tower_file_paths = ["res://main/tower/b_cell/BCell.tscn"]
+
+[node name="BCell" parent="GameMap/TowerPlacer" instance=ExtResource( "4_l3v07" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72114, 0.545232, 0.408513)
+
+[node name="Camera3D" type="Camera3D" parent="GameMap"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 8, 3)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="GameMap"]
+transform = Transform3D(-0.187007, 0.488237, -0.85244, -0.422398, 0.74347, 0.51849, 0.886909, 0.45703, 0.0671961, -0.616026, 1.74179, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="GameMap"]
+environment = SubResource( "Environment_d6ncv" )
+
+[node name="RoundLayer" type="CanvasLayer" parent="."]
+
+[node name="RoundUI" type="Control" parent="RoundLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( "3_oxdkf" )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoundLayer/RoundUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundLayer/RoundUI/HBoxContainer"]
+offset_right = 900.0
+offset_bottom = 600.0
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="RoundLayer/RoundUI/HBoxContainer"]
+minimum_size = Vector2(120, 0)
+offset_left = 904.0
+offset_right = 1024.0
+offset_bottom = 600.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_wbugh" )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 116.0
+offset_bottom = 596.0
+
+[node name="InfoPanelContainer" type="PanelContainer" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer"]
+offset_right = 112.0
+offset_bottom = 136.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_ph0nr" )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer/InfoPanelContainer"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 110.0
+offset_bottom = 136.0
+
+[node name="NameLabel" type="Label" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer/InfoPanelContainer/VBoxContainer"]
+offset_right = 108.0
+offset_bottom = 26.0
+text = "B cell"
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer/InfoPanelContainer/VBoxContainer"]
+offset_top = 30.0
+offset_right = 108.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Cheap, well-rounded cells that divide quickly"
+autowrap_mode = 3
+
+[node name="TowerPanelContainer" type="PanelContainer" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer"]
+offset_top = 140.0
+offset_right = 112.0
+offset_bottom = 296.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_mv03d" )
+
+[node name="TowerGridContainer" type="GridContainer" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer/TowerPanelContainer"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 110.0
+offset_bottom = 154.0
+size_flags_vertical = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+script = ExtResource( "4_rsgbh" )
+mouse_catcher_path = NodePath("../../../../../../../GameMap/MouseCatcher")
+tower_placer_path = NodePath("../../../../../../../GameMap/TowerPlacer")
+
+[node name="Button" type="Button" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer/TowerPanelContainer/TowerGridContainer"]
+offset_right = 72.0
+offset_bottom = 72.0
+action_mode = 0
+icon = ExtResource( "3_h5kku" )
+
+[node name="Button2" type="Button" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer/TowerPanelContainer/TowerGridContainer"]
+offset_top = 80.0
+offset_right = 72.0
+offset_bottom = 152.0
+action_mode = 0
+icon = ExtResource( "3_h5kku" )

@@ -1,0 +1,61 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "Node3D",
+"class": &"GameMap",
+"language": &"GDScript",
+"path": "res://main/game_map/game_map.gd"
+}, {
+"base": "Resource",
+"class": &"GridCell",
+"language": &"GDScript",
+"path": "res://main/game_map/grid_cell/grid_cell.gd"
+}, {
+"base": "MeshInstance3D",
+"class": &"MouseCatcher",
+"language": &"GDScript",
+"path": "res://main/game_map/mouse_catcher/mouse_catcher.gd"
+}, {
+"base": "Node3D",
+"class": &"Tower",
+"language": &"GDScript",
+"path": "res://main/tower/tower.gd"
+}, {
+"base": "GridContainer",
+"class": &"TowerGridContainer",
+"language": &"GDScript",
+"path": "res://main/tower_grid_container.gd"
+}, {
+"base": "Node3D",
+"class": &"TowerPlacer",
+"language": &"GDScript",
+"path": "res://main/tower_placer.gd"
+}]
+_global_script_class_icons={
+"GameMap": "",
+"GridCell": "",
+"MouseCatcher": "",
+"Tower": "",
+"TowerGridContainer": "",
+"TowerPlacer": ""
+}
+
+[application]
+
+config/name="BioDefenders"
+run/main_scene="res://main/Main.tscn"
+config/features=PackedStringArray("4.0", "Vulkan Mobile")
+config/icon="res://icon.png"
+
+[rendering]
+
+vulkan/rendering/back_end=1
+anti_aliasing/quality/msaa=2

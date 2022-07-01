@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ca4w2o4bsidpi"]
+
+[ext_resource type="Shader" path="res://main/shader/gradient_mesh.gdshader" id="1_t5kbs"]
+
+[resource]
+render_priority = 1
+shader = ExtResource( "1_t5kbs" )
+shader_param/highlight_strength = 0.15
+shader_param/rim = 0.2
+shader_param/rim_smooth = 0.05
+shader_param/rim_width = 0.35
