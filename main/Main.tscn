@@ -1,14 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dv4ua3n1knjx5"]
+[gd_scene load_steps=11 format=3 uid="uid://dv4ua3n1knjx5"]
 
-[ext_resource type="Script" path="res://main/game_map/game_map.gd" id="1_8h8ph"]
 [ext_resource type="PackedScene" uid="uid://bwlk47iwol6sb" path="res://main/game_map/mouse_catcher/MouseCatcher.tscn" id="2_thbn6"]
 [ext_resource type="Texture2D" uid="uid://8cbk23x3iwaq" path="res://icon.png" id="3_h5kku"]
 [ext_resource type="Script" path="res://main/tower_placer.gd" id="3_ntu86"]
 [ext_resource type="Theme" uid="uid://c0spe1bptxwki" path="res://main/ui/GlobalTheme.tres" id="3_oxdkf"]
-[ext_resource type="PackedScene" uid="uid://cac2mjkpfee8r" path="res://main/tower/b_cell/BCell.tscn" id="4_l3v07"]
 [ext_resource type="Script" path="res://main/tower_grid_container.gd" id="4_rsgbh"]
-
-[sub_resource type="Environment" id="Environment_d6ncv"]
+[ext_resource type="PackedScene" uid="uid://dyejwyrtiri3b" path="res://main/game_map/GameMap.tscn" id="7_l6l1x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbugh"]
 content_margin_left = 4.0
@@ -38,31 +35,10 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psxtu"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="Main" type="Node"]
-
-[node name="GameMap" type="Node3D" parent="."]
-script = ExtResource( "1_8h8ph" )
-
-[node name="MouseCatcher" parent="GameMap" instance=ExtResource( "2_thbn6" )]
-camera_path = NodePath("../Camera3D")
-
-[node name="TowerPlacer" type="Node3D" parent="GameMap"]
-script = ExtResource( "3_ntu86" )
-mouse_catcher_path = NodePath("../MouseCatcher")
-tower_file_paths = ["res://main/tower/b_cell/BCell.tscn"]
-
-[node name="BCell" parent="GameMap/TowerPlacer" instance=ExtResource( "4_l3v07" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72114, 0.545232, 0.408513)
-
-[node name="Camera3D" type="Camera3D" parent="GameMap"]
-transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 8, 3)
-current = true
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="GameMap"]
-transform = Transform3D(-0.187007, 0.488237, -0.85244, -0.422398, 0.74347, 0.51849, 0.886909, 0.45703, 0.0671961, -0.616026, 1.74179, 0)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="GameMap"]
-environment = SubResource( "Environment_d6ncv" )
 
 [node name="RoundLayer" type="CanvasLayer" parent="."]
 
@@ -133,12 +109,13 @@ size_flags_vertical = 3
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 script = ExtResource( "4_rsgbh" )
-mouse_catcher_path = NodePath("../../../../../../../GameMap/MouseCatcher")
-tower_placer_path = NodePath("../../../../../../../GameMap/TowerPlacer")
+mouse_catcher_path = NodePath("../../../../../../../World/MouseCatcher")
+tower_placer_path = NodePath("../../../../../../../World/TowerPlacer")
 
 [node name="Button" type="Button" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer/TowerPanelContainer/TowerGridContainer"]
 offset_right = 72.0
 offset_bottom = 72.0
+theme_override_styles/pressed = SubResource( "StyleBoxFlat_psxtu" )
 action_mode = 0
 icon = ExtResource( "3_h5kku" )
 
@@ -148,3 +125,23 @@ offset_right = 72.0
 offset_bottom = 152.0
 action_mode = 0
 icon = ExtResource( "3_h5kku" )
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 8, 3)
+current = true
+
+[node name="MouseCatcher" parent="World" instance=ExtResource( "2_thbn6" )]
+skeleton = NodePath("../GameMap")
+camera_path = NodePath("../Camera3D")
+
+[node name="TowerPlacer" type="Node3D" parent="World"]
+script = ExtResource( "3_ntu86" )
+mouse_catcher_path = NodePath("../MouseCatcher")
+tower_file_paths = ["res://main/tower/b_cell/BCell.tscn"]
+
+[node name="GameMap" parent="World" instance=ExtResource( "7_l6l1x" )]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/GameMap"]
+transform = Transform3D(0.491638, -0.466741, 0.73515, -0.0487652, 0.828142, 0.558393, -0.869433, -0.310377, 0.384385, 0, 2.98133, 0)

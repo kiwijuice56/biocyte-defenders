@@ -14,11 +14,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://main/game_map/game_map.gd"
 }, {
-"base": "Resource",
-"class": &"GridCell",
-"language": &"GDScript",
-"path": "res://main/game_map/grid_cell/grid_cell.gd"
-}, {
 "base": "MeshInstance3D",
 "class": &"MouseCatcher",
 "language": &"GDScript",
@@ -41,7 +36,6 @@ _global_script_classes=[{
 }]
 _global_script_class_icons={
 "GameMap": "",
-"GridCell": "",
 "MouseCatcher": "",
 "Tower": "",
 "TowerGridContainer": "",
@@ -54,6 +48,10 @@ config/name="BioDefenders"
 run/main_scene="res://main/Main.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Mobile")
 config/icon="res://icon.png"
+
+[layer_names]
+
+3d_physics/layer_1="Towers"
 
 [rendering]
 

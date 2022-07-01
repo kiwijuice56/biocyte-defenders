@@ -1,15 +1,17 @@
 extends MeshInstance3D
 class_name MouseCatcher
+# Captures and converts mouse input to 3D space
+
+signal mouse_entered
+signal mouse_exited
 
 @export var camera_path: NodePath
 @export var ray_length: int = 32
+
 var cam: Camera3D
+
 var mouse_position: Vector3
 var mouse_caught: bool = false
-
-signal mouse_clicked(Vector2)
-signal mouse_entered
-signal mouse_exited
 
 func _ready() -> void:
 	cam = get_node(camera_path) as Camera3D

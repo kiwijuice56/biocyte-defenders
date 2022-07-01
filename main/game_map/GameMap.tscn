@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyejwyrtiri3b"]
+
+[ext_resource type="Script" path="res://main/game_map/game_map.gd" id="1_05bgu"]
+
+[sub_resource type="Environment" id="Environment_d6ncv"]
+
+[node name="GameMap" type="Node3D"]
+script = ExtResource( "1_05bgu" )
+
+[node name="TrackArea" type="Area3D" parent="."]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="TrackArea"]
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 1.11759e-08, -1.11759e-08, -1.86265e-08, 1, 0, 0, 2.98023e-08)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( "Environment_d6ncv" )
