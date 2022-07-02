@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cp5w2wsir6u8w"]
+
+[node name="Enemy" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c0vygjkbw3w5m"
-path="res://.godot/imported/BCellRawModel.glb-9f039b71619e09551dcbaaee6fd3eb5c.scn"
+path="res://.godot/imported/BCellRawModel.glb-022a42f8c269c8889743b6f47fec1bae.scn"
 
 [deps]
 
-source_file="res://main/tower/b_cell/BCellRawModel.glb"
-dest_files=["res://.godot/imported/BCellRawModel.glb-9f039b71619e09551dcbaaee6fd3eb5c.scn"]
+source_file="res://main/world/tower/b_cell/BCellRawModel.glb"
+dest_files=["res://.godot/imported/BCellRawModel.glb-022a42f8c269c8889743b6f47fec1bae.scn"]
 
 [params]
 

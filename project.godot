@@ -9,34 +9,52 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Resource",
+"class": &"EnemyGroup",
+"language": &"GDScript",
+"path": "res://main/world/enemy_spawner/enemy_group/enemy_group.gd"
+}, {
+"base": "Node3D",
+"class": &"EnemySpawner",
+"language": &"GDScript",
+"path": "res://main/world/enemy_spawner/enemy_spawner.gd"
+}, {
 "base": "Node3D",
 "class": &"GameMap",
 "language": &"GDScript",
-"path": "res://main/game_map/game_map.gd"
+"path": "res://main/world/game_map/game_map.gd"
 }, {
 "base": "MeshInstance3D",
 "class": &"MouseCatcher",
 "language": &"GDScript",
-"path": "res://main/game_map/mouse_catcher/mouse_catcher.gd"
+"path": "res://main/world/mouse_catcher/mouse_catcher.gd"
+}, {
+"base": "Resource",
+"class": &"Round",
+"language": &"GDScript",
+"path": "res://main/world/enemy_spawner/round/round.gd"
 }, {
 "base": "Node3D",
 "class": &"Tower",
 "language": &"GDScript",
-"path": "res://main/tower/tower.gd"
+"path": "res://main/world/tower/tower.gd"
 }, {
 "base": "GridContainer",
 "class": &"TowerGridContainer",
 "language": &"GDScript",
-"path": "res://main/tower_grid_container.gd"
+"path": "res://main/ui/tower_grid_container.gd"
 }, {
 "base": "Node3D",
 "class": &"TowerPlacer",
 "language": &"GDScript",
-"path": "res://main/tower_placer.gd"
+"path": "res://main/world/tower_placer/tower_placer.gd"
 }]
 _global_script_class_icons={
+"EnemyGroup": "",
+"EnemySpawner": "",
 "GameMap": "",
 "MouseCatcher": "",
+"Round": "",
 "Tower": "",
 "TowerGridContainer": "",
 "TowerPlacer": ""
@@ -48,6 +66,10 @@ config/name="BioDefenders"
 run/main_scene="res://main/Main.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Mobile")
 config/icon="res://icon.png"
+
+[gui]
+
+fonts/dynamic_fonts/use_oversampling=false
 
 [layer_names]
 
