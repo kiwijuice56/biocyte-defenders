@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyoy2g64itdhi"]
+
+[ext_resource type="PackedScene" uid="uid://d4j3ilbwbdi60" path="res://main/game_world/game_map/GameMap.tscn" id="1_hwwxt"]
+
+[sub_resource type="Curve3D" id="Curve3D_n8ons"]
+bake_interval = 0.31
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -11.575, 0, 0.289, -0.258, 0, -0.36, 0.258, 0, 0.36, -6.706, 0, 0.33, -0.203, 0, -0.283, 0.203, 0, 0.283, -6.545, 0, 3.758, -0.041, 0, 0.27, 0.041, 0, -0.27, -1.808, 0, 3.696, 0.100823, -0.000156879, 0.19627, -0.100823, 0.000156879, -0.19627, -1.592, 0, -3.598, 0.233835, 0.000128925, -0.174139, -0.233835, -0.000128925, 0.174139, -6.565, 0, -3.601, -0.137815, 0.000160933, -0.194484, 0.137815, -0.000160933, 0.194484, -6.566, 0, -1.036, -0.163991, 0.000135183, -0.159549, 0.163991, -0.000135183, 0.159549, 2.398, 0, -0.773, 0, 0, 0, 0, 0, 0, 2.39319, 9.53674e-07, 3.7639, 0, 0, 0, 0, 0, 0, 10.7927, 0.000105858, 3.62524, 0, 0, 0, 0, 0, 0, -11.575, 0, 0.289),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="Environment" id="Environment_e2rlt"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rpxo2"]
+size = Vector2(48, 48)
+
+[node name="CellSauna" instance=ExtResource( "1_hwwxt" )]
+
+[node name="Path3D" parent="." index="1"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 1.11759e-08, -1.11759e-08, -1.86265e-08, 1, 0, 1, 0)
+curve = SubResource( "Curve3D_n8ons" )
+
+[node name="WorldEnvironment" parent="." index="2"]
+environment = SubResource( "Environment_e2rlt" )
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="3"]
+mesh = SubResource( "PlaneMesh_rpxo2" )

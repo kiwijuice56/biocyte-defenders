@@ -24,13 +24,17 @@ func _input(_event) -> void:
 		for button in get_children():
 			button.disabled = false
 			button.button_pressed = false
+			button.release_focus()
 		if placing_tower:
 			tower_placer.place_tower()
 		
+		selected_index = -1
 		placing_tower = false
 		set_process_input(false)
 
 func button_down(index: int) -> void:
+	if placing_tower:
+		return
 	for button in get_children():
 		if button.get_index() != index:
 			button.disabled = true

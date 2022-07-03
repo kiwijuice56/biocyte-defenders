@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://main/game_world/enemy/Enemy.tscn" id="1_xmv5h"]
+[ext_resource type="Texture2D" path="res://main/game_world/enemy/purple_bacteria/purple_bacteria.png" id="2_powy2"]
+
+[node name="PurpleBacteria" instance=ExtResource( "1_xmv5h" )]
+
+[node name="Sprite3D" parent="." index="1"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource( "2_powy2" )

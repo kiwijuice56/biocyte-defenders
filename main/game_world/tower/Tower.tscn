@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://main/game_world/tower/tower.gd" id="1_0tspx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_aw0mb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63lju"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0.294118, 0.129412, 0.172549, 0.4)
+
+[node name="Tower" type="Node3D"]
+script = ExtResource( "1_0tspx" )
+
+[node name="PlacementArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlacementArea"]
+
+[node name="TargetingArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="IndicatorMesh" type="MeshInstance3D" parent="TargetingArea"]
+visible = false
+mesh = SubResource( "SphereMesh_aw0mb" )
+skeleton = NodePath("../../PlacementArea")
+surface_material_override/0 = SubResource( "StandardMaterial3D_63lju" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TargetingArea"]

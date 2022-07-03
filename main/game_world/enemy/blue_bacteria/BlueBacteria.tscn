@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpl34u0wfnyj4"]
+
+[ext_resource type="PackedScene" uid="uid://cp5w2wsir6u8w" path="res://main/game_world/enemy/Enemy.tscn" id="1_cnqw2"]
+[ext_resource type="Texture2D" uid="uid://j5nelmi83bqe" path="res://main/game_world/enemy/blue_bacteria/blue_bacteria.png" id="2_hi5sv"]
+
+[node name="BlueBacteria" instance=ExtResource( "1_cnqw2" )]
+speed = 1.25
+
+[node name="Sprite3D" parent="." index="1"]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
+texture_filter = 0
+render_priority = 2
+texture = ExtResource( "2_hi5sv" )

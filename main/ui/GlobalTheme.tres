@@ -2,9 +2,10 @@
 
 [ext_resource type="FontData" uid="uid://df85fhgrtp3nr" path="res://main/ui/VarelaRound-Regular.ttf" id="2_a8sed"]
 
-[sub_resource type="Font" id="Font_jxdv5"]
+[sub_resource type="Font" id="Font_qxjfy"]
 data/0 = ExtResource( "2_a8sed" )
+data/1 = ExtResource( "2_a8sed" )
 
 [resource]
-default_font = SubResource( "Font_jxdv5" )
+default_font = SubResource( "Font_qxjfy" )
 default_font_size = 18

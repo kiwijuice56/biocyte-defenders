@@ -1,7 +1,7 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://m36hgh0wc6tf"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://m36hgh0wc6tf"]
+
+[ext_resource type="Shader" path="res://main/shader/outline.gdshader" id="1_jxrp2"]
 
 [resource]
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
-grow = true
-grow_amount = 0.1
+render_priority = 0
+shader = ExtResource( "1_jxrp2" )

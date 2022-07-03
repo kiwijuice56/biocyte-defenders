@@ -9,35 +9,50 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Area3D",
+"class": &"Enemy",
+"language": &"GDScript",
+"path": "res://main/game_world/enemy/enemy.gd"
+}, {
 "base": "Resource",
 "class": &"EnemyGroup",
 "language": &"GDScript",
-"path": "res://main/world/enemy_spawner/enemy_group/enemy_group.gd"
+"path": "res://main/game_world/group_spawner/enemy_group/enemy_group.gd"
 }, {
 "base": "Node3D",
 "class": &"EnemySpawner",
 "language": &"GDScript",
-"path": "res://main/world/enemy_spawner/enemy_spawner.gd"
+"path": "res://main/game_world/group_spawner/enemy_spawner/enemy_spawner.gd"
 }, {
 "base": "Node3D",
 "class": &"GameMap",
 "language": &"GDScript",
-"path": "res://main/world/game_map/game_map.gd"
+"path": "res://main/game_world/game_map/game_map.gd"
+}, {
+"base": "Node3D",
+"class": &"GameWorld",
+"language": &"GDScript",
+"path": "res://main/game_world/game_world.gd"
+}, {
+"base": "Node3D",
+"class": &"GroupSpawner",
+"language": &"GDScript",
+"path": "res://main/game_world/group_spawner/group_spawner.gd"
 }, {
 "base": "MeshInstance3D",
 "class": &"MouseCatcher",
 "language": &"GDScript",
-"path": "res://main/world/mouse_catcher/mouse_catcher.gd"
+"path": "res://main/game_world/mouse_catcher/mouse_catcher.gd"
 }, {
 "base": "Resource",
 "class": &"Round",
 "language": &"GDScript",
-"path": "res://main/world/enemy_spawner/round/round.gd"
+"path": "res://main/game_world/group_spawner/round/round.gd"
 }, {
 "base": "Node3D",
 "class": &"Tower",
 "language": &"GDScript",
-"path": "res://main/world/tower/tower.gd"
+"path": "res://main/game_world/tower/tower.gd"
 }, {
 "base": "GridContainer",
 "class": &"TowerGridContainer",
@@ -47,12 +62,15 @@ _global_script_classes=[{
 "base": "Node3D",
 "class": &"TowerPlacer",
 "language": &"GDScript",
-"path": "res://main/world/tower_placer/tower_placer.gd"
+"path": "res://main/game_world/tower_placer/tower_placer.gd"
 }]
 _global_script_class_icons={
+"Enemy": "",
 "EnemyGroup": "",
 "EnemySpawner": "",
 "GameMap": "",
+"GameWorld": "",
+"GroupSpawner": "",
 "MouseCatcher": "",
 "Round": "",
 "Tower": "",
@@ -65,11 +83,40 @@ _global_script_class_icons={
 config/name="BioDefenders"
 run/main_scene="res://main/Main.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Mobile")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.png"
+
+[display]
+
+window/size/viewport_width=1124
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [gui]
 
 fonts/dynamic_fonts/use_oversampling=false
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/channel_pack": 0,
+"compress/hdr_compression": 1,
+"compress/lossy_quality": 0.7,
+"compress/mode": 3,
+"compress/normal_map": 0,
+"detect_3d/compress_to": 0,
+"mipmaps/generate": true,
+"mipmaps/limit": -1,
+"process/fix_alpha_border": true,
+"process/hdr_as_srgb": false,
+"process/hdr_clamp_exposure": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"process/size_limit": 0,
+"roughness/mode": 0,
+"roughness/src_normal": ""
+}
 
 [layer_names]
 

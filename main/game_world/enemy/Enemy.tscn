@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://cp5w2wsir6u8w"]
+
+[ext_resource type="Script" path="res://main/game_world/enemy/enemy.gd" id="1_mtamk"]
+[ext_resource type="Texture2D" uid="uid://cvba5q0282e7" path="res://main/game_world/enemy/green_bacteria/green_bacteria.png" id="2_6gnhh"]
+
+[sub_resource type="Animation" id="Animation_gjenc"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_yrptv"]
+resource_name = "bob"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 0.15, -0.25, 0, 0.25, 0, 0, 0, -0.25, 0, 0.25, 0, 0),
+"times": PackedFloat32Array(0, 0.7, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 0.25, -0.25, 0, 0.25, 0, 0, 0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0, 0.7, 1.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kw6u4"]
+_data = {
+"RESET": SubResource( "Animation_gjenc" ),
+"bob": SubResource( "Animation_yrptv" )
+}
+
+[node name="Enemy" type="Area3D"]
+script = ExtResource( "1_mtamk" )
+speed = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture = ExtResource( "2_6gnhh" )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "bob"
+libraries = {
+"": SubResource( "AnimationLibrary_kw6u4" )
+}

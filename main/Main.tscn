@@ -1,167 +1,101 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq1ao61hwcl0u"]
+[gd_scene load_steps=10 format=3 uid="uid://qiqif68hdsel"]
 
-[ext_resource type="Script" path="res://main/ui/tower_grid_container.gd" id="2_cx0d2"]
-[ext_resource type="Texture2D" uid="uid://8cbk23x3iwaq" path="res://icon.png" id="3_h5kku"]
-[ext_resource type="Script" path="res://main/world/tower_placer/tower_placer.gd" id="3_ntu86"]
+[ext_resource type="Texture2D" uid="uid://m8rukb57d05v" path="res://main/ui/background_tile.png" id="2_at2nl"]
+[ext_resource type="Script" path="res://main/game_world/tower_placer/tower_placer.gd" id="3_ntu86"]
 [ext_resource type="Theme" uid="uid://b0n5ckcmrige" path="res://main/ui/GlobalTheme.tres" id="3_oxdkf"]
-[ext_resource type="PackedScene" uid="uid://bohe1lt16y8wa" path="res://main/world/mouse_catcher/MouseCatcher.tscn" id="4_nsaro"]
-[ext_resource type="Script" path="res://main/world/enemy_spawner/enemy_spawner.gd" id="6_2kuun"]
-[ext_resource type="PackedScene" path="res://main/world/game_map/GameMap.tscn" id="6_lhh28"]
-[ext_resource type="PackedScene" uid="uid://dyvu57vg8rubx" path="res://main/world/enemy/green_bacteria/GreenBacteria.tscn" id="8_5388o"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbugh"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.133333, 0.133333, 0.227451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph0nr"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-bg_color = Color(0.247059, 0.262745, 0.388235, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mv03d"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
-bg_color = Color(0.101961, 0.0823529, 0.145098, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psxtu"]
-bg_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://dt88wyol2lxmb" path="res://main/ui/rim_edge.png" id="3_x8bf7"]
+[ext_resource type="PackedScene" uid="uid://cwj7aq3qo3l5m" path="res://main/ui/overlay_ui/OverlayUI.tscn" id="4_k4sog"]
+[ext_resource type="PackedScene" path="res://main/game_world/mouse_catcher/MouseCatcher.tscn" id="4_nsaro"]
+[ext_resource type="Script" path="res://main/game_world/game_world.gd" id="5_ahbuc"]
+[ext_resource type="Script" path="res://main/game_world/group_spawner/group_spawner.gd" id="6_2kuun"]
+[ext_resource type="PackedScene" uid="uid://dyoy2g64itdhi" path="res://main/game_world/game_map/cell_sauna/CellSauna.tscn" id="6_73xlh"]
 
 [node name="Main" type="Node"]
 
-[node name="RoundLayer" type="CanvasLayer" parent="."]
-
-[node name="RoundUI" type="Control" parent="RoundLayer"]
+[node name="VisualRoot" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( "3_oxdkf" )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RoundLayer/RoundUI"]
+[node name="TextureRect" type="TextureRect" parent="VisualRoot"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+texture = ExtResource( "2_at2nl" )
+stretch_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RoundLayer/RoundUI/HBoxContainer"]
-offset_right = 856.0
-offset_bottom = 26.0
-size_flags_horizontal = 3
-size_flags_vertical = 0
+[node name="GameplayContainer" type="HBoxContainer" parent="VisualRoot"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -568.0
+offset_top = -300.0
+offset_right = 568.0
+offset_bottom = 300.0
+theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="RoundLayer/RoundUI/HBoxContainer/HBoxContainer"]
-offset_right = 100.0
-offset_bottom = 26.0
-text = "Health: 100"
-
-[node name="PanelContainer" type="PanelContainer" parent="RoundLayer/RoundUI/HBoxContainer"]
-minimum_size = Vector2(120, 0)
-offset_left = 860.0
-offset_right = 1024.0
+[node name="LeftRimEdge" type="TextureRect" parent="VisualRoot/GameplayContainer"]
+offset_right = 6.0
 offset_bottom = 600.0
-theme_override_styles/panel = SubResource( "StyleBoxFlat_wbugh" )
+texture = ExtResource( "3_x8bf7" )
+stretch_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 160.0
-offset_bottom = 596.0
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VisualRoot/GameplayContainer"]
+minimum_size = Vector2(1124, 0)
+offset_left = 6.0
+offset_right = 1130.0
+offset_bottom = 600.0
+stretch = true
 
-[node name="InfoPanelContainer" type="PanelContainer" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer"]
-offset_right = 156.0
-offset_bottom = 136.0
-theme_override_styles/panel = SubResource( "StyleBoxFlat_ph0nr" )
+[node name="SubViewport" type="SubViewport" parent="VisualRoot/GameplayContainer/SubViewportContainer"]
+handle_input_locally = false
+msaa = 2
+size = Vector2i(1124, 600)
+render_target_update_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer/InfoPanelContainer"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 154.0
-offset_bottom = 136.0
+[node name="OverlayLayer" type="CanvasLayer" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport"]
+layer = 6
+follow_viewport_enable = true
 
-[node name="NameLabel" type="Label" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer/InfoPanelContainer/VBoxContainer"]
-offset_right = 152.0
-offset_bottom = 26.0
-text = "B cell"
-horizontal_alignment = 1
+[node name="OverlayUI" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/OverlayLayer" instance=ExtResource( "4_k4sog" )]
 
-[node name="DescriptionLabel" type="Label" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer/InfoPanelContainer/VBoxContainer"]
-offset_top = 30.0
-offset_right = 152.0
-offset_bottom = 134.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Cheap, well-rounded cells that divide quickly"
-autowrap_mode = 3
+[node name="World" type="Node3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport"]
+script = ExtResource( "5_ahbuc" )
 
-[node name="TowerPanelContainer" type="PanelContainer" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer"]
-offset_top = 140.0
-offset_right = 156.0
-offset_bottom = 216.0
-theme_override_styles/panel = SubResource( "StyleBoxFlat_mv03d" )
+[node name="CellSauna" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World" instance=ExtResource( "6_73xlh" )]
 
-[node name="TowerGridContainer" type="GridContainer" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer/TowerPanelContainer"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 154.0
-offset_bottom = 74.0
-size_flags_vertical = 3
-theme_override_constants/h_separation = 8
-theme_override_constants/v_separation = 8
-columns = 2
-script = ExtResource( "2_cx0d2" )
-mouse_catcher_path = NodePath("../../../../../../../World/MouseCatcher")
-tower_placer_path = NodePath("../../../../../../../World/TowerPlacer")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World/CellSauna"]
+transform = Transform3D(-0.150533, -0.441179, 0.884704, -0.33803, 0.863932, 0.373305, -0.929019, -0.242862, -0.279182, 0, 0.825264, 0)
 
-[node name="Button" type="Button" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer/TowerPanelContainer/TowerGridContainer"]
-offset_right = 72.0
-offset_bottom = 72.0
-theme_override_styles/pressed = SubResource( "StyleBoxFlat_psxtu" )
-action_mode = 0
-icon = ExtResource( "3_h5kku" )
-
-[node name="Button2" type="Button" parent="RoundLayer/RoundUI/HBoxContainer/PanelContainer/VBoxContainer/TowerPanelContainer/TowerGridContainer"]
-offset_left = 80.0
-offset_right = 152.0
-offset_bottom = 72.0
-action_mode = 0
-icon = ExtResource( "3_h5kku" )
-
-[node name="World" type="Node3D" parent="."]
-
-[node name="GameMap" parent="World" instance=ExtResource( "6_lhh28" )]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/GameMap"]
-transform = Transform3D(-0.395937, -0.490388, 0.776372, -0.33803, 0.863932, 0.373305, -0.853797, -0.114631, -0.507829, 0, 0.825264, 0)
-
-[node name="TowerPlacer" type="Node3D" parent="World"]
+[node name="TowerPlacer" type="Node3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World"]
 script = ExtResource( "3_ntu86" )
 mouse_catcher_path = NodePath("../MouseCatcher")
-tower_file_paths = ["res://main/world/tower/b_cell/BCell.tscn"]
+tower_file_paths = ["res://main/game_world/tower/b_cell/BCell.tscn"]
 
-[node name="EnemySpawner" type="Node3D" parent="World"]
+[node name="GroupSpawner" type="Node3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World"]
 script = ExtResource( "6_2kuun" )
-round_folder_path = "res://main/world/enemy_spawner/round/"
+round_folder_path = "res://main/game_world/group_spawner/round/"
 name_enemy_path_map = {
-"green": "res://main/world/enemy/green_bacteria/GreenBacteria.tscn"
+"blue": "res://main/game_world/enemy/blue_bacteria/BlueBacteria.tscn",
+"green": "res://main/game_world/enemy/green_bacteria/GreenBacteria.tscn"
 }
 
-[node name="MouseCatcher" parent="World" instance=ExtResource( "4_nsaro" )]
+[node name="GroupSpawnTimer" type="Timer" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World/GroupSpawner"]
+
+[node name="MouseCatcher" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World" instance=ExtResource( "4_nsaro" )]
+visible = false
 camera_path = NodePath("../Camera3D")
 
-[node name="Camera3D" type="Camera3D" parent="World"]
+[node name="Camera3D" type="Camera3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World"]
 transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0.963683, 8, 1.37568)
 projection = 1
 current = true
 size = 13.0
 
-[node name="GreenBacteria" parent="." instance=ExtResource( "8_5388o" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80466, 0.902793, -0.457969)
+[node name="RightRimEdge" type="TextureRect" parent="VisualRoot/GameplayContainer"]
+offset_left = 1130.0
+offset_right = 1136.0
+offset_bottom = 600.0
+texture = ExtResource( "3_x8bf7" )
+stretch_mode = 1
+flip_h = true
