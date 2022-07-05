@@ -1,19 +1,38 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwj7aq3qo3l5m"]
+[gd_scene load_steps=16 format=3 uid="uid://cwj7aq3qo3l5m"]
 
 [ext_resource type="Theme" uid="uid://b0n5ckcmrige" path="res://main/ui/GlobalTheme.tres" id="1_e5dad"]
 [ext_resource type="Script" path="res://main/ui/tower_grid_container.gd" id="2_s8dlc"]
 [ext_resource type="Texture2D" uid="uid://b16jqoqxtj6qt" path="res://main/ui/overlay_ui/dna_icon.png" id="2_vead7"]
 [ext_resource type="Texture2D" uid="uid://6ke0nts5jurw" path="res://main/ui/overlay_ui/heart.png" id="3_koan6"]
 [ext_resource type="Texture2D" uid="uid://8cbk23x3iwaq" path="res://icon.png" id="3_saqkh"]
+[ext_resource type="Texture2D" uid="uid://bh4tcpjm2rkt2" path="res://main/ui/overlay_ui/upgrade_button.png" id="5_8vlna"]
+[ext_resource type="Texture2D" uid="uid://bag4fu33cm8x7" path="res://main/ui/flat_panel.png" id="6_0dajs"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbugh"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.133333, 0.133333, 0.227451, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaqwy"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.133333, 0.133333, 0.227451, 0.831373)
 corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahitt"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.505882, 0.137255, 0.6, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1wjjn"]
+texture = ExtResource( "6_0dajs" )
+region_rect = Rect2(0, 0, 174, 600)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph0nr"]
 content_margin_left = 2.0
@@ -72,6 +91,22 @@ expand_margin_top = 3.0
 expand_margin_right = 3.0
 expand_margin_bottom = 3.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwgtd"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.423529, 0.462745, 0.513726, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.666667, 0.72549, 0.784314, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="OverlayUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -79,12 +114,14 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme = ExtResource( "1_e5dad" )
+metadata/_edit_vertical_guides_ = []
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 metadata/_edit_layout_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
@@ -151,58 +188,248 @@ theme_override_constants/outline_size = 9
 theme_override_font_sizes/font_size = 24
 text = "1294"
 
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+offset_left = 201.0
+offset_right = 950.0
+offset_bottom = 600.0
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer2"]
+visible = false
+minimum_size = Vector2(256, 412)
+offset_left = 475.0
+offset_top = 8.0
+offset_right = 741.0
+offset_bottom = 457.0
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_xaqwy" )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2/PanelContainer"]
+minimum_size = Vector2(250, 0)
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 258.0
+offset_bottom = 441.0
+theme_override_constants/separation = 10
+
+[node name="TopRow" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer"]
+offset_right = 250.0
+offset_bottom = 29.0
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/TopRow"]
+offset_right = 218.0
+offset_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "T Cell"
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/TopRow"]
+minimum_size = Vector2(28, 0)
+offset_left = 222.0
+offset_right = 250.0
+offset_bottom = 29.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource( "StyleBoxFlat_ahitt" )
+text = "x"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer"]
+offset_top = 39.0
+offset_right = 250.0
+offset_bottom = 103.0
+texture = ExtResource( "3_saqkh" )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer"]
+minimum_size = Vector2(0, 100)
+offset_top = 113.0
+offset_right = 250.0
+offset_bottom = 213.0
+theme_override_constants/separation = 2
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
+offset_right = 98.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+texture = ExtResource( "3_saqkh" )
+
+[node name="Control" type="Control" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
+minimum_size = Vector2(150, 0)
+offset_left = 100.0
+offset_right = 250.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer/Control"]
+offset_right = 248.0
+offset_bottom = 96.0
+texture = ExtResource( "5_8vlna" )
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer/Control"]
+offset_left = 11.0
+offset_top = 9.0
+offset_right = 134.0
+offset_bottom = 35.0
+theme_override_colors/font_outline_color = Color(0.0470588, 0.231373, 0.105882, 1)
+theme_override_constants/outline_size = 6
+text = "Sharp toxin"
+
+[node name="Label2" type="Label" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer/Control"]
+offset_left = 31.0
+offset_top = 69.0
+offset_right = 141.0
+offset_bottom = 95.0
+theme_override_colors/font_outline_color = Color(0.054902, 0.145098, 0.294118, 1)
+theme_override_constants/outline_size = 6
+text = "500 DNA"
+horizontal_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer"]
+minimum_size = Vector2(0, 100)
+offset_top = 223.0
+offset_right = 250.0
+offset_bottom = 323.0
+theme_override_constants/separation = 2
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer2"]
+offset_right = 98.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+texture = ExtResource( "3_saqkh" )
+
+[node name="Control" type="Control" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer2"]
+minimum_size = Vector2(150, 0)
+offset_left = 100.0
+offset_right = 250.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer2/Control"]
+offset_right = 248.0
+offset_bottom = 96.0
+texture = ExtResource( "5_8vlna" )
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer2/Control"]
+offset_left = 11.0
+offset_top = 9.0
+offset_right = 134.0
+offset_bottom = 35.0
+theme_override_colors/font_outline_color = Color(0.0470588, 0.231373, 0.105882, 1)
+theme_override_constants/outline_size = 6
+text = "Sharp toxin"
+
+[node name="Label2" type="Label" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer2/Control"]
+offset_left = 31.0
+offset_top = 69.0
+offset_right = 141.0
+offset_bottom = 95.0
+theme_override_colors/font_outline_color = Color(0.054902, 0.145098, 0.294118, 1)
+theme_override_constants/outline_size = 6
+text = "500 DNA"
+horizontal_alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer"]
+minimum_size = Vector2(0, 100)
+offset_top = 333.0
+offset_right = 250.0
+offset_bottom = 433.0
+theme_override_constants/separation = 2
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer3"]
+offset_right = 98.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+texture = ExtResource( "3_saqkh" )
+
+[node name="Control" type="Control" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer3"]
+minimum_size = Vector2(150, 0)
+offset_left = 100.0
+offset_right = 250.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer3/Control"]
+offset_right = 248.0
+offset_bottom = 96.0
+texture = ExtResource( "5_8vlna" )
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer3/Control"]
+offset_left = 11.0
+offset_top = 9.0
+offset_right = 134.0
+offset_bottom = 35.0
+theme_override_colors/font_outline_color = Color(0.0470588, 0.231373, 0.105882, 1)
+theme_override_constants/outline_size = 6
+text = "Sharp toxin"
+
+[node name="Label2" type="Label" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer3/Control"]
+offset_left = 31.0
+offset_top = 69.0
+offset_right = 141.0
+offset_bottom = 95.0
+theme_override_colors/font_outline_color = Color(0.054902, 0.145098, 0.294118, 1)
+theme_override_constants/outline_size = 6
+text = "500 DNA"
+horizontal_alignment = 2
+
 [node name="TowerSelection" type="PanelContainer" parent="HBoxContainer"]
-minimum_size = Vector2(120, 0)
-offset_left = 956.0
+minimum_size = Vector2(174, 0)
+offset_left = 950.0
 offset_right = 1124.0
 offset_bottom = 600.0
 grow_horizontal = 0
-size_flags_horizontal = 10
-theme_override_styles/panel = SubResource( "StyleBoxFlat_wbugh" )
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource( "StyleBoxTexture_1wjjn" )
 metadata/_edit_layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TowerSelection"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 164.0
-offset_bottom = 596.0
+offset_right = 174.0
+offset_bottom = 600.0
 
 [node name="InfoPanelContainer" type="PanelContainer" parent="HBoxContainer/TowerSelection/VBoxContainer"]
-offset_right = 160.0
-offset_bottom = 110.0
+visible = false
+offset_right = 120.0
+offset_bottom = 162.0
 theme_override_styles/panel = SubResource( "StyleBoxFlat_ph0nr" )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TowerSelection/VBoxContainer/InfoPanelContainer"]
 offset_left = 2.0
 offset_top = 2.0
-offset_right = 158.0
-offset_bottom = 110.0
+offset_right = 118.0
+offset_bottom = 162.0
 
 [node name="NameLabel" type="Label" parent="HBoxContainer/TowerSelection/VBoxContainer/InfoPanelContainer/VBoxContainer"]
-offset_right = 156.0
+offset_right = 116.0
 offset_bottom = 26.0
 text = "B cell"
 horizontal_alignment = 1
 
 [node name="DescriptionLabel" type="Label" parent="HBoxContainer/TowerSelection/VBoxContainer/InfoPanelContainer/VBoxContainer"]
 offset_top = 30.0
-offset_right = 156.0
-offset_bottom = 108.0
+offset_right = 116.0
+offset_bottom = 160.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Cheap, well-rounded cells that divide quickly"
 autowrap_mode = 3
 
 [node name="TowerPanelContainer" type="PanelContainer" parent="HBoxContainer/TowerSelection/VBoxContainer"]
+visible = false
 offset_top = 114.0
-offset_right = 160.0
-offset_bottom = 194.0
+offset_right = 164.0
+offset_bottom = 278.0
 theme_override_styles/panel = SubResource( "StyleBoxFlat_mv03d" )
 
 [node name="TowerGridContainer" type="GridContainer" parent="HBoxContainer/TowerSelection/VBoxContainer/TowerPanelContainer"]
 offset_left = 2.0
 offset_top = 2.0
-offset_right = 158.0
-offset_bottom = 78.0
+offset_right = 162.0
+offset_bottom = 162.0
 size_flags_vertical = 3
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
@@ -211,20 +438,40 @@ script = ExtResource( "2_s8dlc" )
 mouse_catcher_path = NodePath("../../../../../../../World/MouseCatcher")
 tower_placer_path = NodePath("../../../../../../../World/TowerPlacer")
 
-[node name="Button" type="Button" parent="HBoxContainer/TowerSelection/VBoxContainer/TowerPanelContainer/TowerGridContainer"]
+[node name="Button2" type="Button" parent="HBoxContainer/TowerSelection/VBoxContainer/TowerPanelContainer/TowerGridContainer"]
 offset_right = 76.0
 offset_bottom = 76.0
 size_flags_vertical = 0
 theme_override_styles/normal = SubResource( "StyleBoxFlat_wi0j8" )
 theme_override_styles/hover = SubResource( "StyleBoxFlat_0p58f" )
 theme_override_styles/pressed = SubResource( "StyleBoxFlat_0p58f" )
+theme_override_styles/disabled = SubResource( "StyleBoxFlat_hwgtd" )
 theme_override_styles/focus = SubResource( "StyleBoxFlat_0p58f" )
 action_mode = 0
 icon = ExtResource( "3_saqkh" )
 
-[node name="Button2" type="Button" parent="HBoxContainer/TowerSelection/VBoxContainer/TowerPanelContainer/TowerGridContainer"]
+[node name="Button3" type="Button" parent="HBoxContainer/TowerSelection/VBoxContainer/TowerPanelContainer/TowerGridContainer"]
 offset_left = 84.0
-offset_right = 156.0
+offset_right = 160.0
 offset_bottom = 76.0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource( "StyleBoxFlat_wi0j8" )
+theme_override_styles/hover = SubResource( "StyleBoxFlat_0p58f" )
+theme_override_styles/pressed = SubResource( "StyleBoxFlat_0p58f" )
+theme_override_styles/disabled = SubResource( "StyleBoxFlat_hwgtd" )
+theme_override_styles/focus = SubResource( "StyleBoxFlat_0p58f" )
+action_mode = 0
+icon = ExtResource( "3_saqkh" )
+
+[node name="Button4" type="Button" parent="HBoxContainer/TowerSelection/VBoxContainer/TowerPanelContainer/TowerGridContainer"]
+offset_top = 84.0
+offset_right = 76.0
+offset_bottom = 160.0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource( "StyleBoxFlat_wi0j8" )
+theme_override_styles/hover = SubResource( "StyleBoxFlat_0p58f" )
+theme_override_styles/pressed = SubResource( "StyleBoxFlat_0p58f" )
+theme_override_styles/disabled = SubResource( "StyleBoxFlat_hwgtd" )
+theme_override_styles/focus = SubResource( "StyleBoxFlat_0p58f" )
 action_mode = 0
 icon = ExtResource( "3_saqkh" )

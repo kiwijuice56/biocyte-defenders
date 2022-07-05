@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://chgqolrqvi67h"]
+[gd_scene load_steps=5 format=3 uid="uid://xh00y1c4cr6f"]
 
 [ext_resource type="PackedScene" path="res://main/game_world/tower/Tower.tscn" id="1_o6kxf"]
 [ext_resource type="PackedScene" uid="uid://ckmbwsntdneeo" path="res://main/game_world/tower/b_cell/BCellModel.tscn" id="2_mmid1"]
@@ -8,7 +8,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_o6kbj"]
 radius = 3.0
 
-[node name="BCell" instance=ExtResource( "1_o6kxf" )]
+[node name="TCell" instance=ExtResource( "1_o6kxf" )]
 base_range = 3.0
 
 [node name="CollisionShape3D" parent="PlacementArea" index="0"]

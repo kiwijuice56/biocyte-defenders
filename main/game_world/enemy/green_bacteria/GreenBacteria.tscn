@@ -4,7 +4,5 @@
 
 [node name="GreenBacteria" instance=ExtResource( "1_cnqw2" )]
 
-[node name="Sprite3D" parent="." index="1"]
-transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
-texture_filter = 0
-render_priority = 1
+[node name="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(0.599517, 0, 0.0240791, 0, 0.6, 0, -0.0240791, 0, 0.599517, 0, 0, 0)

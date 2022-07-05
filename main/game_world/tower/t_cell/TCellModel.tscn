@@ -1,22 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckmbwsntdneeo"]
+[gd_scene load_steps=5 format=3 uid="uid://dwhvxiaa8tbgd"]
 
 [ext_resource type="PackedScene" uid="uid://c0vygjkbw3w5m" path="res://main/game_world/tower/t_cell/TCellRawModel.glb" id="1_yuo5k"]
 [ext_resource type="Material" uid="uid://byfi6qpxrxkpj" path="res://main/shader/gradient_material.tres" id="2_kmnrf"]
 [ext_resource type="Material" uid="uid://ca4w2o4bsidpi" path="res://main/shader/gradient_priority_material.tres" id="3_57n5n"]
 [ext_resource type="Material" uid="uid://m36hgh0wc6tf" path="res://main/shader/outline_material.tres" id="4_7q6bk"]
 
-[node name="BCellModel" instance=ExtResource( "1_yuo5k" )]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+[node name="TCellModel" instance=ExtResource( "1_yuo5k" )]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
 [node name="Icosphere" parent="Armature/Skeleton3D" index="0"]
 material_override = ExtResource( "2_kmnrf" )
-shader_params/albedo_first = Color(0.537255, 1, 0.952941, 1)
-shader_params/albedo_second = Color(0.321569, 0.258824, 1, 1)
+shader_params/albedo_first = Color(1, 1, 1, 1)
+shader_params/albedo_second = Color(0, 0, 0, 0)
 
 [node name="Icosphere001" parent="Armature/Skeleton3D" index="1"]
 material_override = ExtResource( "3_57n5n" )
-shader_params/albedo_first = Color(0.372549, 0.8, 1, 1)
-shader_params/albedo_second = Color(0.301961, 0.74902, 0.545098, 1)
+shader_params/albedo_first = Color(1, 1, 1, 1)
+shader_params/albedo_second = Color(0, 0, 0, 0)
 
 [node name="Icosphere002" parent="Armature/Skeleton3D" index="2"]
 material_override = ExtResource( "4_7q6bk" )
