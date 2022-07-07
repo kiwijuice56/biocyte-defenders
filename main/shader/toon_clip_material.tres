@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://5xoyqfb367i6"]
+
+[ext_resource type="Shader" uid="uid://0s2gxr7ktwom" path="res://main/shader/toon_clip.tres" id="1_y3a6k"]
+
+[resource]
+render_priority = 8
+shader = ExtResource( "1_y3a6k" )
+shader_param/rim = 0.2
+shader_param/rim_smooth = 0.05
+shader_param/rim_width = 0.65

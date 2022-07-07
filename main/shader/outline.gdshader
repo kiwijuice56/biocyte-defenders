@@ -1,8 +1,8 @@
 shader_type spatial;
-render_mode unshaded, cull_front;
+render_mode unshaded, cull_back;
 
-instance uniform vec4 color: source_color;
+instance uniform vec4 outline_color: source_color = vec4(0.0,0.0,0.0,1.0);
 
 void fragment() {
-	ALBEDO = vec3(color.r, color.g, color.b);
+	ALBEDO = vec3(outline_color.r, outline_color.g, outline_color.b);
 }

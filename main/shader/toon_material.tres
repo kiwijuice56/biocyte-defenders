@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://csuyrbflwteh2"]
+
+[ext_resource type="Shader" path="res://main/shader/toon.gdshader" id="1_t7lcl"]
+
+[resource]
+render_priority = 0
+shader = ExtResource( "1_t7lcl" )
+shader_param/rim = 0.2
+shader_param/rim_smooth = 0.05
+shader_param/rim_width = 0.6

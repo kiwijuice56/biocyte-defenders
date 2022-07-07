@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cvba5q0282e7" path="res://main/game_world/enemy/green_bacteria/green_bacteria.png" id="2_6gnhh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3ik4l"]
-radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgb52"]
 transparency = 2
@@ -41,7 +40,8 @@ _data = {
 }
 
 [node name="Enemy" type="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 2
+collision_mask = 0
 script = ExtResource( "1_mtamk" )
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

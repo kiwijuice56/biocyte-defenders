@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://qiqif68hdsel"]
+[gd_scene load_steps=10 format=3 uid="uid://qiqif68hdsel"]
 
 [ext_resource type="Texture2D" uid="uid://m8rukb57d05v" path="res://main/ui/background_tile.png" id="2_at2nl"]
 [ext_resource type="Script" path="res://main/game_world/tower_placer/tower_placer.gd" id="3_ntu86"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://main/game_world/game_world.gd" id="5_ahbuc"]
 [ext_resource type="Script" path="res://main/game_world/group_spawner/group_spawner.gd" id="6_2kuun"]
 [ext_resource type="PackedScene" uid="uid://dyoy2g64itdhi" path="res://main/game_world/game_map/cell_sauna/CellSauna.tscn" id="6_73xlh"]
-[ext_resource type="PackedScene" uid="uid://chgqolrqvi67h" path="res://main/game_world/tower/b_cell/BCell.tscn" id="8_q74i7"]
 
 [node name="Main" type="Node"]
 
@@ -65,12 +64,6 @@ script = ExtResource( "5_ahbuc" )
 
 [node name="CellSauna" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World" instance=ExtResource( "6_73xlh" )]
 
-[node name="BCell" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World/CellSauna" instance=ExtResource( "8_q74i7" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.274, 0.5, 1.846)
-
-[node name="BCell2" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World/CellSauna" instance=ExtResource( "8_q74i7" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.616, 0.5, 5.477)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World/CellSauna"]
 transform = Transform3D(-0.762668, -0.560136, 0.323395, 0, 0.5, 0.866026, -0.64679, 0.66049, -0.381334, 0, 0.825264, 0)
 
@@ -98,7 +91,7 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.224, 22, 0)
 current = true
 fov = 32.0
 size = 12.5
-near = 3.0
+near = 5.0
 
 [node name="RightRimEdge" type="TextureRect" parent="VisualRoot/GameplayContainer"]
 offset_left = 1130.0

@@ -1,0 +1,24 @@
+shader_type spatial;
+render_mode depth_draw_always;
+
+instance uniform vec4 albedo_first: source_color;
+instance uniform vec4 albedo_second: source_color;
+
+uniform float rim : hint_range(0,1) = 0.2;
+uniform float rim_width : hint_range(0,1) = 0.35;
+uniform float rim_smooth : hint_range(0,1) = 0.05;
+
+void fragment() {
+	ALBEDO =  vec3(
+		(albedo_first.r * (1.0 - UV.y)) + (albedo_second.r * UV.y), 
+		(albedo_first.g * (1.0 - UV.y)) + (albedo_second.g * UV.y),
+		(albedo_first.b * (1.0 - UV.y)) + (albedo_second.b * UV.y));
+	ALPHA = (albedo_first.a * (1.0 - UV.y)) + (albedo_second.a * UV.y);
+}
+
+void light() {
+	float rim_dot = 1.0 - dot(NORMAL, VIEW);
+	float rim_threshold = pow((1.0 - rim_width), dot(LIGHT,  NORMAL));
+	float rim_intensity = smoothstep(rim_threshold - rim_smooth/2.0, rim_threshold + rim_smooth/2.0, rim_dot);
+	SPECULAR_LIGHT = LIGHT_COLOR * rim * rim_intensity + ALBEDO * (1.0);
+}
