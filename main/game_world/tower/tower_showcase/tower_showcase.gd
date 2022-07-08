@@ -12,9 +12,9 @@ func _ready() -> void:
 	# ProjectSettings.save()
 	
 	var tower_cnt: int = 0
-	for top in range(0, 5):
+	for bot in range(0, 5):
 		for mid in range(0, 5):
-			for bot in range(0, 5):
+			for top in range(0, 5):
 				var main_path_cnt: int = int(top > 2) + int(mid > 2) + int(bot > 2)
 				var side_path_cnt: int = int(top > 0) + int(mid > 0) + int(bot > 0)
 				var max_path: int = max(top, max(mid, bot))

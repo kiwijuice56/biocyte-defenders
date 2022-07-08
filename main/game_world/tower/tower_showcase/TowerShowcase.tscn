@@ -12,7 +12,7 @@ tower = ExtResource("2_2tmbe")
 transform = Transform3D(1, 0, 0, 0, 0.275168, 0.961396, 0, -0.961396, 0.275168, 7.40222, 10.254, 10.3286)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.969668, 0.197789, 0.143612, -0.244086, -0.752493, -0.6117, -0.0129201, -0.628199, 0.777945, 0, 0, -0.168317)
+transform = Transform3D(-0.343216, 0.682944, 0.644818, 0.299266, -0.571226, 0.764291, 0.890305, 0.455289, -0.00832778, 0, 0, -0.168317)
 
 [node name="Label3D" type="Label" parent="."]
 script = ExtResource("3_m6h4f")
