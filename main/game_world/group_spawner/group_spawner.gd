@@ -74,4 +74,5 @@ func parse_round(text_path: String) -> Round:
 		new_group.count = param[0].substr(1).to_int()
 		new_group.delay = param[1].to_float()
 		new_group.enemy_scene = name_enemy_map[param[2]]
+	file.close()
 	return new_round

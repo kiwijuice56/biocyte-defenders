@@ -32,13 +32,13 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1wjjn"]
-texture = ExtResource( "6_0dajs" )
+texture = ExtResource("6_0dajs")
 region_rect = Rect2(0, 0, 197, 600)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7jfw8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8vx0i"]
-texture = ExtResource( "8_m4wdn" )
+texture = ExtResource("8_m4wdn")
 region_rect = Rect2(0, 0, 81, 79)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph0nr"]
@@ -57,7 +57,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-theme = ExtResource( "1_e5dad" )
+theme = ExtResource("1_e5dad")
 metadata/_edit_vertical_guides_ = []
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -96,7 +96,7 @@ offset_top = 3.0
 offset_right = 43.0
 offset_bottom = 40.0
 size_flags_vertical = 4
-texture = ExtResource( "3_koan6" )
+texture = ExtResource("3_koan6")
 stretch_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
@@ -119,7 +119,7 @@ theme_override_constants/separation = -13
 texture_filter = 2
 offset_right = 39.0
 offset_bottom = 44.0
-texture = ExtResource( "2_vead7" )
+texture = ExtResource("2_vead7")
 stretch_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
@@ -134,7 +134,7 @@ text = "1294"
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 offset_left = 201.0
-offset_right = 927.0
+offset_right = 1124.0
 offset_bottom = 600.0
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 8
@@ -142,29 +142,27 @@ theme_override_constants/margin_right = 8
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer2"]
 visible = false
-minimum_size = Vector2(256, 412)
-offset_left = 452.0
+offset_left = 831.0
 offset_top = 8.0
-offset_right = 718.0
-offset_bottom = 457.0
+offset_right = 915.0
+offset_bottom = 349.0
 size_flags_horizontal = 10
 size_flags_vertical = 0
-theme_override_styles/panel = SubResource( "StyleBoxFlat_xaqwy" )
+theme_override_styles/panel = SubResource("StyleBoxFlat_xaqwy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2/PanelContainer"]
-minimum_size = Vector2(250, 0)
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 258.0
-offset_bottom = 441.0
+offset_right = 76.0
+offset_bottom = 333.0
 theme_override_constants/separation = 10
 
 [node name="TopRow" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer"]
-offset_right = 250.0
+offset_right = 68.0
 offset_bottom = 29.0
 
 [node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/TopRow"]
-offset_right = 218.0
+offset_right = 48.0
 offset_bottom = 29.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -172,45 +170,42 @@ text = "T Cell"
 vertical_alignment = 1
 
 [node name="ExitButton" type="Button" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/TopRow"]
-minimum_size = Vector2(28, 0)
-offset_left = 222.0
-offset_right = 250.0
+offset_left = 52.0
+offset_right = 68.0
 offset_bottom = 29.0
 size_flags_horizontal = 8
 size_flags_vertical = 0
-theme_override_styles/normal = SubResource( "StyleBoxFlat_ahitt" )
+theme_override_styles/normal = SubResource("StyleBoxFlat_ahitt")
 text = "x"
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer"]
 offset_top = 39.0
-offset_right = 250.0
+offset_right = 68.0
 offset_bottom = 103.0
-texture = ExtResource( "3_saqkh" )
+texture = ExtResource("3_saqkh")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer"]
-minimum_size = Vector2(0, 100)
 offset_top = 113.0
-offset_right = 250.0
-offset_bottom = 213.0
+offset_right = 68.0
+offset_bottom = 177.0
 theme_override_constants/separation = 2
 
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
-offset_right = 98.0
-offset_bottom = 100.0
+offset_right = 64.0
+offset_bottom = 64.0
 size_flags_horizontal = 3
-texture = ExtResource( "3_saqkh" )
+texture = ExtResource("3_saqkh")
 
 [node name="Control" type="Control" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
-minimum_size = Vector2(150, 0)
-offset_left = 100.0
-offset_right = 250.0
-offset_bottom = 100.0
+offset_left = 66.0
+offset_right = 68.0
+offset_bottom = 64.0
 size_flags_horizontal = 3
 
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer/Control"]
 offset_right = 248.0
 offset_bottom = 96.0
-texture = ExtResource( "5_8vlna" )
+texture = ExtResource("5_8vlna")
 stretch_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer/Control"]
@@ -233,29 +228,27 @@ text = "500 DNA"
 horizontal_alignment = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer"]
-minimum_size = Vector2(0, 100)
-offset_top = 223.0
-offset_right = 250.0
-offset_bottom = 323.0
+offset_top = 187.0
+offset_right = 68.0
+offset_bottom = 251.0
 theme_override_constants/separation = 2
 
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer2"]
-offset_right = 98.0
-offset_bottom = 100.0
+offset_right = 64.0
+offset_bottom = 64.0
 size_flags_horizontal = 3
-texture = ExtResource( "3_saqkh" )
+texture = ExtResource("3_saqkh")
 
 [node name="Control" type="Control" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer2"]
-minimum_size = Vector2(150, 0)
-offset_left = 100.0
-offset_right = 250.0
-offset_bottom = 100.0
+offset_left = 66.0
+offset_right = 68.0
+offset_bottom = 64.0
 size_flags_horizontal = 3
 
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer2/Control"]
 offset_right = 248.0
 offset_bottom = 96.0
-texture = ExtResource( "5_8vlna" )
+texture = ExtResource("5_8vlna")
 stretch_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer2/Control"]
@@ -278,29 +271,27 @@ text = "500 DNA"
 horizontal_alignment = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer"]
-minimum_size = Vector2(0, 100)
-offset_top = 333.0
-offset_right = 250.0
-offset_bottom = 433.0
+offset_top = 261.0
+offset_right = 68.0
+offset_bottom = 325.0
 theme_override_constants/separation = 2
 
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer3"]
-offset_right = 98.0
-offset_bottom = 100.0
+offset_right = 64.0
+offset_bottom = 64.0
 size_flags_horizontal = 3
-texture = ExtResource( "3_saqkh" )
+texture = ExtResource("3_saqkh")
 
 [node name="Control" type="Control" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer3"]
-minimum_size = Vector2(150, 0)
-offset_left = 100.0
-offset_right = 250.0
-offset_bottom = 100.0
+offset_left = 66.0
+offset_right = 68.0
+offset_bottom = 64.0
 size_flags_horizontal = 3
 
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer3/Control"]
 offset_right = 248.0
 offset_bottom = 96.0
-texture = ExtResource( "5_8vlna" )
+texture = ExtResource("5_8vlna")
 stretch_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer3/Control"]
@@ -323,17 +314,15 @@ text = "500 DNA"
 horizontal_alignment = 2
 
 [node name="TowerSelection" type="PanelContainer" parent="HBoxContainer"]
-minimum_size = Vector2(197, 0)
-offset_left = 927.0
+offset_left = 1124.0
 offset_right = 1124.0
 offset_bottom = 600.0
 grow_horizontal = 0
 size_flags_horizontal = 8
-theme_override_styles/panel = SubResource( "StyleBoxTexture_1wjjn" )
+theme_override_styles/panel = SubResource("StyleBoxTexture_1wjjn")
 metadata/_edit_layout_mode = 1
 
 [node name="Control" type="Control" parent="HBoxContainer/TowerSelection"]
-offset_right = 197.0
 offset_bottom = 600.0
 
 [node name="TowerPanelContainer" type="PanelContainer" parent="HBoxContainer/TowerSelection/Control"]
@@ -341,7 +330,7 @@ offset_left = 21.0
 offset_top = 164.0
 offset_right = 185.0
 offset_bottom = 328.0
-theme_override_styles/panel = SubResource( "StyleBoxEmpty_7jfw8" )
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7jfw8")
 
 [node name="TowerGridContainer" type="GridContainer" parent="HBoxContainer/TowerSelection/Control/TowerPanelContainer"]
 offset_right = 164.0
@@ -350,44 +339,41 @@ size_flags_vertical = 3
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 2
-script = ExtResource( "2_s8dlc" )
+script = ExtResource("2_s8dlc")
 mouse_catcher_path = NodePath("../../../../../../../World/MouseCatcher")
 tower_placer_path = NodePath("../../../../../../../World/TowerPlacer")
 
 [node name="Button2" type="Button" parent="HBoxContainer/TowerSelection/Control/TowerPanelContainer/TowerGridContainer"]
-minimum_size = Vector2(81, 79)
-offset_right = 81.0
-offset_bottom = 79.0
 size_flags_vertical = 0
-theme_override_styles/normal = SubResource( "StyleBoxTexture_8vx0i" )
+theme_override_styles/normal = SubResource("StyleBoxTexture_8vx0i")
 action_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TowerSelection"]
 visible = false
-offset_right = 197.0
+offset_right = 50.0
 offset_bottom = 600.0
 
 [node name="InfoPanelContainer" type="PanelContainer" parent="HBoxContainer/TowerSelection/VBoxContainer"]
-offset_right = 197.0
-offset_bottom = 110.0
-theme_override_styles/panel = SubResource( "StyleBoxFlat_ph0nr" )
+offset_right = 50.0
+offset_bottom = 318.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ph0nr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TowerSelection/VBoxContainer/InfoPanelContainer"]
 offset_left = 2.0
 offset_top = 2.0
-offset_right = 195.0
-offset_bottom = 110.0
+offset_right = 48.0
+offset_bottom = 318.0
 
 [node name="NameLabel" type="Label" parent="HBoxContainer/TowerSelection/VBoxContainer/InfoPanelContainer/VBoxContainer"]
-offset_right = 193.0
+offset_right = 46.0
 offset_bottom = 26.0
 text = "B cell"
 horizontal_alignment = 1
 
 [node name="DescriptionLabel" type="Label" parent="HBoxContainer/TowerSelection/VBoxContainer/InfoPanelContainer/VBoxContainer"]
 offset_top = 30.0
-offset_right = 193.0
-offset_bottom = 108.0
+offset_right = 46.0
+offset_bottom = 316.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Cheap, well-rounded cells that divide quickly"
 autowrap_mode = 3

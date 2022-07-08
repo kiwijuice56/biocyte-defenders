@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://qiqif68hdsel"]
+[gd_scene load_steps=10 format=3 uid="uid://xko4d3g7eyk0"]
 
-[ext_resource type="Texture2D" uid="uid://m8rukb57d05v" path="res://main/ui/background_tile.png" id="2_at2nl"]
+[ext_resource type="Texture2D" uid="uid://m8rukb57d05v" path="res://main/ui/background_tile.png" id="2_4jldf"]
+[ext_resource type="Texture2D" uid="uid://dt88wyol2lxmb" path="res://main/ui/rim_edge.png" id="2_p6flq"]
 [ext_resource type="Script" path="res://main/game_world/tower_placer/tower_placer.gd" id="3_ntu86"]
 [ext_resource type="Theme" uid="uid://b0n5ckcmrige" path="res://main/ui/GlobalTheme.tres" id="3_oxdkf"]
-[ext_resource type="Texture2D" uid="uid://dt88wyol2lxmb" path="res://main/ui/rim_edge.png" id="3_x8bf7"]
 [ext_resource type="PackedScene" uid="uid://cwj7aq3qo3l5m" path="res://main/ui/overlay_ui/OverlayUI.tscn" id="4_k4sog"]
 [ext_resource type="PackedScene" uid="uid://b1ipl2m4js35" path="res://main/game_world/mouse_catcher/MouseCatcher.tscn" id="4_nsaro"]
 [ext_resource type="Script" path="res://main/game_world/game_world.gd" id="5_ahbuc"]
@@ -15,12 +15,12 @@
 [node name="VisualRoot" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( "3_oxdkf" )
+theme = ExtResource("3_oxdkf")
 
 [node name="TextureRect" type="TextureRect" parent="VisualRoot"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( "2_at2nl" )
+texture = ExtResource("2_4jldf")
 stretch_mode = 1
 
 [node name="GameplayContainer" type="HBoxContainer" parent="VisualRoot"]
@@ -37,11 +37,10 @@ theme_override_constants/separation = 0
 [node name="LeftRimEdge" type="TextureRect" parent="VisualRoot/GameplayContainer"]
 offset_right = 6.0
 offset_bottom = 600.0
-texture = ExtResource( "3_x8bf7" )
-stretch_mode = 1
+texture = ExtResource("2_p6flq")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="VisualRoot/GameplayContainer"]
-minimum_size = Vector2(1124, 0)
+custom_minimum_size = Vector2(1124, 600)
 offset_left = 6.0
 offset_right = 1130.0
 offset_bottom = 600.0
@@ -57,23 +56,22 @@ render_target_update_mode = 4
 layer = 6
 follow_viewport_enable = true
 
-[node name="OverlayUI" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/OverlayLayer" instance=ExtResource( "4_k4sog" )]
+[node name="OverlayUI" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/OverlayLayer" instance=ExtResource("4_k4sog")]
 
 [node name="World" type="Node3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport"]
-script = ExtResource( "5_ahbuc" )
+script = ExtResource("5_ahbuc")
 
-[node name="CellSauna" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World" instance=ExtResource( "6_73xlh" )]
+[node name="CellSauna" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World" instance=ExtResource("6_73xlh")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World/CellSauna"]
 transform = Transform3D(-0.762668, -0.560136, 0.323395, 0, 0.5, 0.866026, -0.64679, 0.66049, -0.381334, 0, 0.825264, 0)
 
 [node name="TowerPlacer" type="Node3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World"]
-script = ExtResource( "3_ntu86" )
-mouse_catcher_path = NodePath("../MouseCatcher")
+script = ExtResource("3_ntu86")
 tower_file_paths = ["res://main/game_world/tower/b_cell/BCell.tscn"]
 
 [node name="GroupSpawner" type="Node3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World"]
-script = ExtResource( "6_2kuun" )
+script = ExtResource("6_2kuun")
 round_folder_path = "res://main/game_world/group_spawner/round/"
 name_enemy_path_map = {
 "blue": "res://main/game_world/enemy/blue_bacteria/BlueBacteria.tscn",
@@ -82,7 +80,7 @@ name_enemy_path_map = {
 
 [node name="GroupSpawnTimer" type="Timer" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World/GroupSpawner"]
 
-[node name="MouseCatcher" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World" instance=ExtResource( "4_nsaro" )]
+[node name="MouseCatcher" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World" instance=ExtResource("4_nsaro")]
 visible = false
 camera_path = NodePath("../Camera3D")
 
@@ -97,6 +95,5 @@ near = 5.0
 offset_left = 1130.0
 offset_right = 1136.0
 offset_bottom = 600.0
-texture = ExtResource( "3_x8bf7" )
-stretch_mode = 1
+texture = ExtResource("2_p6flq")
 flip_h = true

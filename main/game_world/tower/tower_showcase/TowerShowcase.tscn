@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://uke2v5i8vh83"]
+
+[ext_resource type="Script" path="res://main/game_world/tower/tower_showcase/tower_showcase.gd" id="1_q2bne"]
+[ext_resource type="PackedScene" uid="uid://7d2o02g16e5s" path="res://main/game_world/tower/t_cell/TCell.tscn" id="2_2tmbe"]
+[ext_resource type="Script" path="res://main/ui/fps_label.gd" id="3_m6h4f"]
+
+[node name="TowerShowcase" type="Node3D"]
+script = ExtResource("1_q2bne")
+tower = ExtResource("2_2tmbe")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.275168, 0.961396, 0, -0.961396, 0.275168, 7.40222, 10.254, 10.3286)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.969668, 0.197789, 0.143612, -0.244086, -0.752493, -0.6117, -0.0129201, -0.628199, 0.777945, 0, 0, -0.168317)
+
+[node name="Label3D" type="Label" parent="."]
+script = ExtResource("3_m6h4f")

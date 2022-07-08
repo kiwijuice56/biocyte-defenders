@@ -49,6 +49,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://main/game_world/group_spawner/round/round.gd"
 }, {
+"base": "Tower",
+"class": &"TCell",
+"language": &"GDScript",
+"path": "res://main/game_world/tower/t_cell/t_cell.gd"
+}, {
 "base": "Node3D",
 "class": &"Tower",
 "language": &"GDScript",
@@ -60,9 +65,19 @@ _global_script_classes=[{
 "path": "res://main/ui/tower_grid_container.gd"
 }, {
 "base": "Node3D",
+"class": &"TowerModel",
+"language": &"GDScript",
+"path": "res://main/game_world/tower/tower_model/tower_model.gd"
+}, {
+"base": "Node3D",
 "class": &"TowerPlacer",
 "language": &"GDScript",
 "path": "res://main/game_world/tower_placer/tower_placer.gd"
+}, {
+"base": "Node3D",
+"class": &"TowerShowcase",
+"language": &"GDScript",
+"path": "res://main/game_world/tower/tower_showcase/tower_showcase.gd"
 }]
 _global_script_class_icons={
 "Enemy": "",
@@ -73,9 +88,12 @@ _global_script_class_icons={
 "GroupSpawner": "",
 "MouseCatcher": "",
 "Round": "",
+"TCell": "",
 "Tower": "",
 "TowerGridContainer": "",
-"TowerPlacer": ""
+"TowerModel": "",
+"TowerPlacer": "",
+"TowerShowcase": ""
 }
 
 [application]
@@ -125,4 +143,5 @@ texture={
 [rendering]
 
 vulkan/rendering/back_end=1
+limits/global_shader_variables/buffer_size=800000
 anti_aliasing/quality/msaa=2

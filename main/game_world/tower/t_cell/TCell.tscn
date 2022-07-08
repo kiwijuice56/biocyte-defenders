@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://7d2o02g16e5s"]
+[gd_scene load_steps=6 format=3 uid="uid://7d2o02g16e5s"]
 
-[ext_resource type="PackedScene" path="res://main/game_world/tower/Tower.tscn" id="1_o6kxf"]
+[ext_resource type="PackedScene" uid="uid://brve7cp7rh5uc" path="res://main/game_world/tower/Tower.tscn" id="1_o6kxf"]
+[ext_resource type="Script" path="res://main/game_world/tower/t_cell/t_cell.gd" id="2_gdmdk"]
 [ext_resource type="PackedScene" uid="uid://df1o58els6fhg" path="res://main/game_world/tower/t_cell/TCellModel.tscn" id="2_mmid1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p71b2"]
@@ -8,13 +9,15 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_o6kbj"]
 radius = 3.0
 
-[node name="TCell" instance=ExtResource( "1_o6kxf" )]
-base_range = 3.0
+[node name="TCell" instance=ExtResource("1_o6kxf")]
+script = ExtResource("2_gdmdk")
+base_model = ExtResource("2_mmid1")
 
 [node name="CollisionShape3D" parent="PlacementArea" index="0"]
-shape = SubResource( "SphereShape3D_p71b2" )
+shape = SubResource("SphereShape3D_p71b2")
 
 [node name="CollisionShape3D" parent="TargetingArea" index="1"]
-shape = SubResource( "SphereShape3D_o6kbj" )
+shape = SubResource("SphereShape3D_o6kbj")
 
-[node name="T\\CellModel" parent="." index="2" instance=ExtResource( "2_mmid1" )]
+[node name="UpgradeLabel" parent="." index="3"]
+render_priority = 16

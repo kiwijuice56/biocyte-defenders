@@ -2,14 +2,12 @@ extends Node3D
 class_name TowerPlacer
 # Creates and places towers with mouse input from MouseCatcher
 
-@export var mouse_catcher_path: NodePath
+@export var mouse_catcher: MeshInstance3D
 @export var tower_file_paths: Array[String]
 
-var mouse_catcher: MouseCatcher
 var tower_to_place: Tower
 
 func _ready() -> void:
-	mouse_catcher = get_node(mouse_catcher_path)
 	set_process(false)
 
 # When placing a tower, move it to the mouse position
