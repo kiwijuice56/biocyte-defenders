@@ -58,6 +58,10 @@ follow_viewport_enable = true
 
 [node name="OverlayUI" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/OverlayLayer" instance=ExtResource("4_k4sog")]
 
+[node name="TowerGridContainer" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/OverlayLayer/OverlayUI/HBoxContainer/TowerSelection/Control/TowerPanelContainer" index="0" node_paths=PackedStringArray("mouse_catcher", "tower_placer")]
+mouse_catcher = NodePath("../../../../../../../World/MouseCatcher")
+tower_placer = NodePath("../../../../../../../World/TowerPlacer")
+
 [node name="World" type="Node3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport"]
 script = ExtResource("5_ahbuc")
 
@@ -66,9 +70,10 @@ script = ExtResource("5_ahbuc")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World/CellSauna"]
 transform = Transform3D(-0.762668, -0.560136, 0.323395, 0, 0.5, 0.866026, -0.64679, 0.66049, -0.381334, 0, 0.825264, 0)
 
-[node name="TowerPlacer" type="Node3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World"]
+[node name="TowerPlacer" type="Node3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World" node_paths=PackedStringArray("mouse_catcher")]
 script = ExtResource("3_ntu86")
-tower_file_paths = ["res://main/game_world/tower/b_cell/BCell.tscn"]
+mouse_catcher = NodePath("../MouseCatcher")
+tower_file_paths = ["res://main/game_world/tower/t_cell/TCell.tscn"]
 
 [node name="GroupSpawner" type="Node3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World"]
 script = ExtResource("6_2kuun")
@@ -81,7 +86,6 @@ name_enemy_path_map = {
 [node name="GroupSpawnTimer" type="Timer" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World/GroupSpawner"]
 
 [node name="MouseCatcher" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World" instance=ExtResource("4_nsaro")]
-visible = false
 camera_path = NodePath("../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/World"]
@@ -97,3 +101,5 @@ offset_right = 1136.0
 offset_bottom = 600.0
 texture = ExtResource("2_p6flq")
 flip_h = true
+
+[editable path="VisualRoot/GameplayContainer/SubViewportContainer/SubViewport/OverlayLayer/OverlayUI"]

@@ -8,9 +8,6 @@ class_name TowerShowcase
 @export var distance: float = 2
 
 func _ready() -> void:
-	# ProjectSettings.set_setting("rendering/limits/global_shader_variables/buffer_size", 800000)
-	# ProjectSettings.save()
-	
 	var tower_cnt: int = 0
 	for bot in range(0, 5):
 		for mid in range(0, 5):

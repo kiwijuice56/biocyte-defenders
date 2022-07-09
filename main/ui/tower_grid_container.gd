@@ -2,19 +2,13 @@ extends GridContainer
 class_name TowerGridContainer
 # Triggers tower placement and UI updates with button clicks
 
-@export var mouse_catcher_path: NodePath
-@export var tower_placer_path: NodePath
-
-var mouse_catcher: MouseCatcher
-var tower_placer: TowerPlacer
+@export var mouse_catcher: MeshInstance3D
+@export var tower_placer: Node3D
 
 var placing_tower: bool = false
 var selected_index: int = -1
 
 func _ready() -> void:
-	mouse_catcher = get_node(mouse_catcher_path)
-	tower_placer = get_node(tower_placer_path)
-	
 	for button in get_children():
 		button.connect("button_down", button_down, [button.get_index()])
 		button.connect("mouse_exited", button_mouse_exited, [button.get_index()])
