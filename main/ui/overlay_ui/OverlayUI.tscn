@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwj7aq3qo3l5m"]
+[gd_scene load_steps=17 format=3 uid="uid://cwj7aq3qo3l5m"]
 
 [ext_resource type="Theme" uid="uid://b0n5ckcmrige" path="res://main/ui/GlobalTheme.tres" id="1_e5dad"]
 [ext_resource type="Script" path="res://main/ui/tower_grid_container.gd" id="2_s8dlc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bh4tcpjm2rkt2" path="res://main/ui/overlay_ui/upgrade_button.png" id="5_8vlna"]
 [ext_resource type="Texture2D" uid="uid://bag4fu33cm8x7" path="res://main/ui/flat_panel.png" id="6_0dajs"]
 [ext_resource type="Texture2D" uid="uid://cn5x4yjbdoai5" path="res://main/ui/tower_button.png" id="8_m4wdn"]
+[ext_resource type="Texture2D" uid="uid://j8qttkrasswj" path="res://main/ui/icon_crop.png" id="9_fbaw5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaqwy"]
 content_margin_left = 8.0
@@ -51,6 +52,7 @@ content_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8vx0i"]
 texture = ExtResource("8_m4wdn")
+region_rect = Rect2(0, 0, 73, 84)
 
 [node name="OverlayUI" type="Control"]
 anchor_right = 1.0
@@ -399,6 +401,11 @@ text = "200"
 horizontal_alignment = 1
 vertical_alignment = 2
 metadata/_edit_layout_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TowerSelection/Control/TowerPanelContainer/TowerGridContainer/Button2"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_fbaw5")
 
 [node name="Button3" type="Button" parent="HBoxContainer/TowerSelection/Control/TowerPanelContainer/TowerGridContainer"]
 custom_minimum_size = Vector2(73, 84)

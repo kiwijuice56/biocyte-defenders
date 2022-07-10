@@ -8,6 +8,13 @@ class_name TowerShowcase
 @export var distance: float = 2
 
 func _ready() -> void:
+	set_process(false)
+	($TCell as Tower).upgrades = [0, 0, 0]
+	$TCell.update_upgrade_status()
+	($TCell2 as Tower).upgrades = [2,0,0]
+	$TCell2.update_upgrade_status()
+	($TCell3 as Tower).upgrades = [0, 0, 2]
+	$TCell3.update_upgrade_status()
 	var tower_cnt: int = 0
 	for bot in range(0, 5):
 		for mid in range(0, 5):

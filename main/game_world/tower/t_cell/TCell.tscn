@@ -20,4 +20,5 @@ shape = SubResource("SphereShape3D_p71b2")
 shape = SubResource("SphereShape3D_o6kbj")
 
 [node name="UpgradeLabel" parent="." index="3"]
+visible = false
 render_priority = 16
