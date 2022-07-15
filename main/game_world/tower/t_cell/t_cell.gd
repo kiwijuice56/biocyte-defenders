@@ -7,6 +7,7 @@ func update_upgrade_status() -> void:
 	super.update_upgrade_status()
 	
 	model.main_model_name = "tier1-0"
+	model.main_model_shoot_anim = "t1shoot"
 	
 	# Calculate the main and secondary path 
 	var highest_path: int = 0

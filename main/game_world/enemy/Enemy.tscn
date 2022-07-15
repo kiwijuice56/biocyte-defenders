@@ -10,7 +10,7 @@ transparency = 2
 alpha_scissor_threshold = 0.05
 alpha_antialiasing_mode = 0
 shading_mode = 0
-albedo_texture = ExtResource( "2_6gnhh" )
+albedo_texture = ExtResource("2_6gnhh")
 texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_donsf"]
@@ -35,24 +35,24 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kw6u4"]
 _data = {
-"RESET": SubResource( "Animation_gjenc" ),
-"bob": SubResource( "Animation_yrptv" )
+"RESET": SubResource("Animation_gjenc"),
+"bob": SubResource("Animation_yrptv")
 }
 
 [node name="Enemy" type="Area3D"]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource( "1_mtamk" )
+script = ExtResource("1_mtamk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource( "SphereShape3D_3ik4l" )
+shape = SubResource("SphereShape3D_3ik4l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.999211, 0, 0.0397056, 0, 1, 0, -0.0397056, 0, 0.999211, 0, 0, 0)
-material_override = SubResource( "StandardMaterial3D_lgb52" )
-mesh = SubResource( "PlaneMesh_donsf" )
+material_override = SubResource("StandardMaterial3D_lgb52")
+mesh = SubResource("PlaneMesh_donsf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource( "AnimationLibrary_kw6u4" )
+"": SubResource("AnimationLibrary_kw6u4")
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwj7aq3qo3l5m"]
+[gd_scene load_steps=18 format=3 uid="uid://cwj7aq3qo3l5m"]
 
 [ext_resource type="Theme" uid="uid://b0n5ckcmrige" path="res://main/ui/GlobalTheme.tres" id="1_e5dad"]
 [ext_resource type="Script" path="res://main/ui/tower_grid_container.gd" id="2_s8dlc"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bag4fu33cm8x7" path="res://main/ui/flat_panel.png" id="6_0dajs"]
 [ext_resource type="Texture2D" uid="uid://cn5x4yjbdoai5" path="res://main/ui/tower_button.png" id="8_m4wdn"]
 [ext_resource type="Texture2D" uid="uid://j8qttkrasswj" path="res://main/ui/icon_crop.png" id="9_fbaw5"]
+[ext_resource type="Script" path="res://main/ui/fps_label.gd" id="10_sjusr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaqwy"]
 content_margin_left = 8.0
@@ -416,3 +417,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_8vx0i")
 action_mode = 0
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("10_sjusr")

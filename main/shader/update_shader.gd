@@ -2,8 +2,8 @@
 extends EditorScript
 # Creates outline meshes for all MeshInstance3Ds in a scene
 
-var outline_color: Color = Color("#132452")
-var outline_width: float = 0.16
+var outline_color: Color = Color("#262045")
+var outline_width: float = 0.04
 
 var outline_mat: ShaderMaterial = load("res://main/shader/outline_material.tres")
 var toon_mat: ShaderMaterial = load("res://main/shader/toon_material.tres")

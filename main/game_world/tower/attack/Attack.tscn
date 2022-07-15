@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkvuavatxnjrx"]
+
+[ext_resource type="Script" path="res://main/game_world/tower/attack/attack.gd" id="1_kjqj6"]
+
+[node name="Attack" type="Area3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_kjqj6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]

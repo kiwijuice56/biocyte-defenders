@@ -10,6 +10,11 @@ config_version=5
 
 _global_script_classes=[{
 "base": "Area3D",
+"class": &"Attack",
+"language": &"GDScript",
+"path": "res://main/game_world/tower/attack/attack.gd"
+}, {
+"base": "Area3D",
 "class": &"Enemy",
 "language": &"GDScript",
 "path": "res://main/game_world/enemy/enemy.gd"
@@ -80,6 +85,7 @@ _global_script_classes=[{
 "path": "res://main/game_world/tower/tower_showcase/tower_showcase.gd"
 }]
 _global_script_class_icons={
+"Attack": "",
 "Enemy": "",
 "EnemyGroup": "",
 "EnemySpawner": "",
@@ -138,7 +144,11 @@ texture={
 
 [layer_names]
 
-3d_physics/layer_1="Towers"
+3d_physics/layer_1="Tower"
+3d_physics/layer_2="Enemy"
+3d_physics/layer_3="Projectile"
+3d_physics/layer_4="Map"
+3d_physics/layer_5="Path"
 
 [rendering]
 

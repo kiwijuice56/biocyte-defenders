@@ -8,12 +8,11 @@ transparency = 2
 alpha_scissor_threshold = 0.05
 alpha_antialiasing_mode = 0
 shading_mode = 0
-albedo_texture = ExtResource( "2_hi5sv" )
+albedo_texture = ExtResource("2_hi5sv")
 texture_filter = 0
 
-[node name="BlueBacteria" instance=ExtResource( "1_cnqw2" )]
-speed = 1.25
+[node name="BlueBacteria" instance=ExtResource("1_cnqw2")]
 
 [node name="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(0.649487, 0, 0.0258086, 0, 0.65, 0, -0.0258086, 0, 0.649487, 0, 0, 0)
-material_override = SubResource( "StandardMaterial3D_cdbxl" )
+material_override = SubResource("StandardMaterial3D_cdbxl")

@@ -4,6 +4,7 @@ class_name TowerModel
 
 @export var palette: Dictionary 
 var main_model_name: String
+var main_model_shoot_anim: String
 
 func _ready() -> void:
 	# Models are offset by certain y positions for better clarity when exporting and editing
@@ -20,8 +21,10 @@ func finalize_model() -> void:
 	
 	# Remove needless meshes
 	for child in get_children():
-		if not child == main_model:
-			child.queue_free()
+		if not child == main_model and child is Node3D:
+			# Keep skeletons to prevent errors in animations
+			for mesh in child.get_child(0).get_children():
+				mesh.queue_free()
 	
 	# Update colors on meshes
 	for child in main_model.get_child(0).get_children():
@@ -31,3 +34,6 @@ func finalize_model() -> void:
 		var color_group: String = mesh_name.substr(0, mesh_name.find("-"))
 		child.set_shader_instance_uniform("albedo_first", palette[color_group][0])
 		child.set_shader_instance_uniform("albedo_second", palette[color_group][1])
+
+func animate_shoot() -> void:
+	$AnimationPlayer.current_animation = main_model_shoot_anim

@@ -5,9 +5,11 @@
 [sub_resource type="Environment" id="Environment_d6ncv"]
 
 [node name="GameMap" type="Node3D"]
-script = ExtResource( "1_vbjv0" )
+script = ExtResource("1_vbjv0")
 
 [node name="TrackArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="TrackArea"]
 
@@ -15,4 +17,4 @@ script = ExtResource( "1_vbjv0" )
 transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 1.11759e-08, -1.11759e-08, -1.86265e-08, 1, 0, 0, 2.98023e-08)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( "Environment_d6ncv" )
+environment = SubResource("Environment_d6ncv")

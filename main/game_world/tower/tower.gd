@@ -37,9 +37,9 @@ var valid_placement: bool = false:
 	set(value):
 		valid_placement = value
 		if valid_placement:
-			indicator_mesh.get_surface_override_material(0).set("albedo_color", Color("#19222b66"))
+			indicator_mesh.material_override.set("albedo_color", Color("#19222b66"))
 		else:
-			indicator_mesh.get_surface_override_material(0).set("albedo_color", Color("#6b212ca0"))
+			indicator_mesh.material_override.set("albedo_color", Color("#6b212ca0"))
 
 func _ready() -> void:
 	$PlacementArea.connect("area_entered", area_entered_placement_area)
@@ -53,6 +53,7 @@ func _ready() -> void:
 	# Initialize stat traits as setter functions are not called in the editor
 	$CooldownTimer.wait_time = cooldown_time
 	indicator_mesh.mesh.radius = attack_range
+	$TargetingArea/CollisionShape3D.shape.radius = attack_range
 	
 	update_upgrade_status()
 
@@ -64,15 +65,43 @@ func area_exited_placement_area(_area: Area3D) -> void:
 
 func area_entered_targeting_area(area: Area3D) -> void:
 	targets[area] = true
-	$CooldownTimer.start()
+	if $CooldownTimer.is_stopped() and active:
+		$CooldownTimer.start()
 
 func area_exited_targeting_area(area: Area3D) -> void:
 	targets.erase(area)
-	$CooldownTimer.stop()
 
 func attack_cooldown_ended() -> void:
-	# rotate mesh
-	pass
+	if active:
+		$CooldownTimer.start()
+	
+	var target: Enemy = get_target()
+	if target == null:
+		return
+	rotation.x = 0
+	rotation.z = 0
+	look_at(target.global_transform.origin)
+	
+	model.animate_shoot()
+	
+	var new_attack: Attack = attack.instantiate() as Attack
+	new_attack.initial_dir = target.global_transform.origin - global_transform.origin
+	get_tree().root.add_child(new_attack)
+	new_attack.global_transform.origin = global_transform.origin
+
+func get_target() -> Enemy:
+	if len(targets) > 0:
+		var unit_order: Array[Enemy] = targets.keys()
+		unit_order.sort_custom(path_sort)
+		match target_type:
+			TargetingType.FIRST:
+				return unit_order[0]
+			TargetingType.LAST:
+				return unit_order[len(unit_order) - 1]
+	return null
+
+func path_sort(a: Enemy, b: Enemy) -> bool:
+	return a.path_follow.unit_offset > b.path_follow.unit_offset
 
 func upgrade_threshold_met(priority: Array[int]) -> bool:
 	for i in range(len(upgrades)):

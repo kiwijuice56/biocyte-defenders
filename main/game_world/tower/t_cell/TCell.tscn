@@ -1,20 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://7d2o02g16e5s"]
+[gd_scene load_steps=9 format=3 uid="uid://7d2o02g16e5s"]
 
 [ext_resource type="PackedScene" uid="uid://brve7cp7rh5uc" path="res://main/game_world/tower/Tower.tscn" id="1_o6kxf"]
 [ext_resource type="Script" path="res://main/game_world/tower/t_cell/t_cell.gd" id="2_gdmdk"]
 [ext_resource type="PackedScene" uid="uid://df1o58els6fhg" path="res://main/game_world/tower/t_cell/TCellModel.tscn" id="2_mmid1"]
+[ext_resource type="PackedScene" uid="uid://bdx7nfdj46fyh" path="res://main/game_world/tower/attack/cytotoxin/Cytotoxin.tscn" id="3_6og2i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p71b2"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63lju"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0.294118, 0.129412, 0.172549, 0.4)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lgjrm"]
+radius = 2.5
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_o6kbj"]
-radius = 3.0
+radius = 2.5
 
 [node name="TCell" instance=ExtResource("1_o6kxf")]
 script = ExtResource("2_gdmdk")
+attack = ExtResource("3_6og2i")
 base_model = ExtResource("2_mmid1")
 
 [node name="CollisionShape3D" parent="PlacementArea" index="0"]
 shape = SubResource("SphereShape3D_p71b2")
+
+[node name="IndicatorMesh" parent="TargetingArea" index="0"]
+visible = true
+material_override = SubResource("StandardMaterial3D_63lju")
+mesh = SubResource("SphereMesh_lgjrm")
 
 [node name="CollisionShape3D" parent="TargetingArea" index="1"]
 shape = SubResource("SphereShape3D_o6kbj")

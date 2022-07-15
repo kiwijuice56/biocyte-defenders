@@ -9,6 +9,11 @@ var tower_to_place: Tower
 
 func _ready() -> void:
 	set_process(false)
+	# Cache towers in memory
+	for tower_file_path in tower_file_paths:
+		var tower: Tower = load(tower_file_path).instantiate()
+		add_child(tower)
+		tower.queue_free()
 
 # When placing a tower, move it to the mouse position
 func _process(_delta: float) -> void:
