@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cwj7aq3qo3l5m"]
+[gd_scene load_steps=19 format=3 uid="uid://cwj7aq3qo3l5m"]
 
 [ext_resource type="Theme" uid="uid://b0n5ckcmrige" path="res://main/ui/GlobalTheme.tres" id="1_e5dad"]
 [ext_resource type="Script" path="res://main/ui/tower_grid_container.gd" id="2_s8dlc"]
@@ -7,8 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://8cbk23x3iwaq" path="res://icon.png" id="3_saqkh"]
 [ext_resource type="Texture2D" uid="uid://bh4tcpjm2rkt2" path="res://main/ui/overlay_ui/upgrade_button.png" id="5_8vlna"]
 [ext_resource type="Texture2D" uid="uid://bag4fu33cm8x7" path="res://main/ui/flat_panel.png" id="6_0dajs"]
+[ext_resource type="Texture2D" uid="uid://j0l5spvk52mr" path="res://main/ui/panel.png" id="7_g1b13"]
 [ext_resource type="Texture2D" uid="uid://cn5x4yjbdoai5" path="res://main/ui/tower_button.png" id="8_m4wdn"]
-[ext_resource type="Texture2D" uid="uid://j8qttkrasswj" path="res://main/ui/icon_crop.png" id="9_fbaw5"]
+[ext_resource type="Texture2D" uid="uid://cxc5iwrqk8xd1" path="res://main/ui/icon2.png" id="9_ko73l"]
 [ext_resource type="Script" path="res://main/ui/fps_label.gd" id="10_sjusr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaqwy"]
@@ -35,9 +36,17 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1wjjn"]
 texture = ExtResource("6_0dajs")
-region_rect = Rect2(0, 0, 197, 600)
+region_rect = Rect2(0, 0, 414, 1253)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jl7lt"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yhdfr"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 2.0
+content_margin_bottom = 6.0
+texture = ExtResource("7_g1b13")
+margin_left = 8.0
+margin_top = 7.0
+region_rect = Rect2(0, 0, 167, 184)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wgyg4"]
 content_margin_left = 4.0
@@ -45,11 +54,13 @@ content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7jfw8"]
-content_margin_left = 5.0
-content_margin_top = 5.0
-content_margin_right = 5.0
-content_margin_bottom = 5.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2e52c"]
+texture = ExtResource("7_g1b13")
+margin_left = 8.0
+margin_top = 7.0
+margin_right = 5.0
+margin_bottom = 4.0
+region_rect = Rect2(0, 0, 167, 184)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8vx0i"]
 texture = ExtResource("8_m4wdn")
@@ -139,7 +150,7 @@ text = "1294"
 
 [node name="Status" type="MarginContainer" parent="HBoxContainer"]
 offset_left = 463.0
-offset_right = 927.0
+offset_right = 926.0
 offset_bottom = 600.0
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 8
@@ -148,9 +159,9 @@ theme_override_constants/margin_right = 8
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/Status"]
 visible = false
 custom_minimum_size = Vector2(300, 400)
-offset_left = 156.0
+offset_left = 155.0
 offset_top = 8.0
-offset_right = 456.0
+offset_right = 455.0
 offset_bottom = 408.0
 size_flags_horizontal = 10
 size_flags_vertical = 0
@@ -321,7 +332,7 @@ horizontal_alignment = 2
 
 [node name="TowerSelection" type="PanelContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(197, 0)
-offset_left = 927.0
+offset_left = 926.0
 offset_right = 1124.0
 offset_bottom = 600.0
 grow_horizontal = 0
@@ -329,24 +340,35 @@ size_flags_horizontal = 8
 theme_override_styles/panel = SubResource("StyleBoxTexture_1wjjn")
 metadata/_edit_layout_mode = 1
 
-[node name="Control" type="Control" parent="HBoxContainer/TowerSelection"]
-offset_right = 197.0
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/TowerSelection"]
+offset_right = 198.0
 offset_bottom = 600.0
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
 
-[node name="InfoPanelContainer" type="PanelContainer" parent="HBoxContainer/TowerSelection/Control"]
-offset_left = 23.0
-offset_top = 26.0
-offset_right = 220.0
-offset_bottom = 136.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_jl7lt")
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TowerSelection/MarginContainer"]
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 184.0
+offset_bottom = 586.0
+theme_override_constants/separation = 9
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TowerSelection/Control/InfoPanelContainer"]
+[node name="InfoPanelContainer" type="PanelContainer" parent="HBoxContainer/TowerSelection/MarginContainer/VBoxContainer"]
+offset_right = 170.0
+offset_bottom = 189.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_yhdfr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TowerSelection/MarginContainer/VBoxContainer/InfoPanelContainer"]
 custom_minimum_size = Vector2(160, 0)
-offset_right = 160.0
-offset_bottom = 175.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 168.0
+offset_bottom = 183.0
 size_flags_horizontal = 0
 
-[node name="NameLabel" type="Label" parent="HBoxContainer/TowerSelection/Control/InfoPanelContainer/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="HBoxContainer/TowerSelection/MarginContainer/VBoxContainer/InfoPanelContainer/VBoxContainer"]
 offset_right = 160.0
 offset_bottom = 41.0
 theme_override_font_sizes/font_size = 24
@@ -355,7 +377,7 @@ text = "T cell"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="DescriptionLabel" type="Label" parent="HBoxContainer/TowerSelection/Control/InfoPanelContainer/VBoxContainer"]
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer/TowerSelection/MarginContainer/VBoxContainer/InfoPanelContainer/VBoxContainer"]
 offset_top = 45.0
 offset_right = 160.0
 offset_bottom = 175.0
@@ -363,34 +385,35 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Cheap, well-rounded cells that divide quickly. Attacks with weak cytotoxins."
 autowrap_mode = 3
 
-[node name="TowerPanelContainer" type="PanelContainer" parent="HBoxContainer/TowerSelection/Control"]
-offset_left = 21.0
-offset_top = 228.0
-offset_right = 185.0
-offset_bottom = 392.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_7jfw8")
-
-[node name="TowerGridContainer" type="GridContainer" parent="HBoxContainer/TowerSelection/Control/TowerPanelContainer"]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 159.0
-offset_bottom = 159.0
+[node name="TowerPanelContainer" type="PanelContainer" parent="HBoxContainer/TowerSelection/MarginContainer/VBoxContainer"]
+offset_top = 198.0
+offset_right = 170.0
+offset_bottom = 572.0
 size_flags_vertical = 3
-theme_override_constants/h_separation = 5
+theme_override_styles/panel = SubResource("StyleBoxTexture_2e52c")
+
+[node name="TowerGridContainer" type="GridContainer" parent="HBoxContainer/TowerSelection/MarginContainer/VBoxContainer/TowerPanelContainer"]
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 165.0
+offset_bottom = 91.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/h_separation = 3
 theme_override_constants/v_separation = 5
 columns = 2
 script = ExtResource("2_s8dlc")
 
-[node name="Button2" type="Button" parent="HBoxContainer/TowerSelection/Control/TowerPanelContainer/TowerGridContainer"]
+[node name="Button2" type="Button" parent="HBoxContainer/TowerSelection/MarginContainer/VBoxContainer/TowerPanelContainer/TowerGridContainer"]
 custom_minimum_size = Vector2(73, 84)
-offset_right = 73.0
+offset_right = 79.0
 offset_bottom = 84.0
-size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_styles/normal = SubResource("StyleBoxTexture_8vx0i")
 action_mode = 0
 
-[node name="Label" type="Label" parent="HBoxContainer/TowerSelection/Control/TowerPanelContainer/TowerGridContainer/Button2"]
+[node name="Label" type="Label" parent="HBoxContainer/TowerSelection/MarginContainer/VBoxContainer/TowerPanelContainer/TowerGridContainer/Button2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -403,20 +426,16 @@ horizontal_alignment = 1
 vertical_alignment = 2
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TowerSelection/Control/TowerPanelContainer/TowerGridContainer/Button2"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_fbaw5")
-
-[node name="Button3" type="Button" parent="HBoxContainer/TowerSelection/Control/TowerPanelContainer/TowerGridContainer"]
-custom_minimum_size = Vector2(73, 84)
-offset_left = 78.0
-offset_right = 151.0
-offset_bottom = 84.0
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_8vx0i")
-action_mode = 0
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TowerSelection/MarginContainer/VBoxContainer/TowerPanelContainer/TowerGridContainer/Button2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -21.5
+offset_right = 32.5
+offset_bottom = 21.5
+texture = ExtResource("9_ko73l")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://brve7cp7rh5uc"]
+[gd_scene load_steps=8 format=3 uid="uid://brve7cp7rh5uc"]
 
 [ext_resource type="Script" path="res://main/game_world/tower/tower.gd" id="1_0tspx"]
+[ext_resource type="Texture2D" uid="uid://cuuo63tg2o1ys" path="res://main/shader/circle.png" id="2_2nl3k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63lju"]
 transparency = 1
@@ -9,6 +10,21 @@ specular_mode = 2
 albedo_color = Color(0.294118, 0.129412, 0.172549, 0.4)
 
 [sub_resource type="SphereMesh" id="SphereMesh_aw0mb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_advtw"]
+render_priority = 10
+transparency = 1
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+albedo_texture = ExtResource("2_2nl3k")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nwf7o"]
+material = SubResource("StandardMaterial3D_advtw")
+
+[sub_resource type="Curve" id="Curve_eq3im"]
+_data = [Vector2(0.029576, 0.953579), 0.0, 0.0, 0, 0, Vector2(0.124442, 0.653772), 0.0, 0.0, 0, 0, Vector2(0.791295, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Tower" type="Node3D"]
 script = ExtResource("1_0tspx")
@@ -37,3 +53,18 @@ one_shot = true
 billboard = 1
 no_depth_test = true
 font_size = 32
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+visible = false
+amount = 64
+lifetime = 1.5
+speed_scale = 3.0
+explosiveness = 0.7
+mesh = SubResource("PlaneMesh_nwf7o")
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 8.85
+initial_velocity_max = 8.85
+scale_amount_curve = SubResource("Curve_eq3im")

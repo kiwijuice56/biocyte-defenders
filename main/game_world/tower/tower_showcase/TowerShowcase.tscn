@@ -20,7 +20,6 @@ transform = Transform3D(-0.643429, 0, 0.765506, 0, 1, 0, -0.765506, 0, -0.643429
 transform = Transform3D(-0.852539, 0.15433, -0.49936, 0.0347953, 0.970051, 0.240396, 0.521505, 0.187571, -0.832376, -0.603166, -0.373886, -5.57707)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TCell3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 mesh = SubResource("CylinderMesh_wi2mp")
 

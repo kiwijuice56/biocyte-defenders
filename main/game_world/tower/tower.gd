@@ -65,15 +65,16 @@ func area_exited_placement_area(_area: Area3D) -> void:
 
 func area_entered_targeting_area(area: Area3D) -> void:
 	targets[area] = true
-	if $CooldownTimer.is_stopped() and active:
+	if $CooldownTimer.is_stopped():
 		$CooldownTimer.start()
 
 func area_exited_targeting_area(area: Area3D) -> void:
 	targets.erase(area)
 
 func attack_cooldown_ended() -> void:
-	if active:
-		$CooldownTimer.start()
+	if not active:
+		return
+	$CooldownTimer.start()
 	
 	var target: Enemy = get_target()
 	if target == null:
@@ -114,3 +115,4 @@ func update_upgrade_status() -> void:
 		model.queue_free()
 	model = base_model.instantiate()
 	add_child(model)
+	move_child(model, 0)
