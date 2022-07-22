@@ -2,7 +2,11 @@ extends Area3D
 class_name Attack
 
 @export var move_speed: float = 1.0
-@export var pierce: int
+@export var pierce: int:
+	set(value):
+		pierce = value
+		if pierce <= 0:
+			queue_free()
 @export var damage: int
 
 var initial_dir: Vector3:
@@ -16,9 +20,7 @@ func _ready() -> void:
 
 # Called when the projectile collides with an enemy
 func hit_target(enemy: Area3D) -> void:
-	pierce -= 1
-	if pierce == 0:
-		queue_free()
+	pass
 
 func _physics_process(delta: float) -> void:
 	position += initial_dir * delta * move_speed

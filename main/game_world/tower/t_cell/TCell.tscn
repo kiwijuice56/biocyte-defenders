@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bdx7nfdj46fyh" path="res://main/game_world/tower/attack/cytotoxin/Cytotoxin.tscn" id="3_6og2i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p71b2"]
+radius = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63lju"]
 transparency = 1

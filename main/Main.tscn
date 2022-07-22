@@ -37,7 +37,9 @@ script = ExtResource("6_2kuun")
 round_folder_path = "res://main/game_world/group_spawner/round/"
 name_enemy_path_map = {
 "blue": "res://main/game_world/enemy/blue_bacteria/BlueBacteria.tscn",
-"green": "res://main/game_world/enemy/green_bacteria/GreenBacteria.tscn"
+"green": "res://main/game_world/enemy/green_bacteria/GreenBacteria.tscn",
+"purple": "res://main/game_world/enemy/purple_bacteria/PurpleBacteria.tscn",
+"red": "res://main/game_world/enemy/red_bacteria/RedBacteria.tscn"
 }
 
 [node name="GroupSpawnTimer" type="Timer" parent="World/GroupSpawner"]

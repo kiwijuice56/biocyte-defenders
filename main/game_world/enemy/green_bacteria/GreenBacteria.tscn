@@ -2,7 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://cp5w2wsir6u8w" path="res://main/game_world/enemy/Enemy.tscn" id="1_cnqw2"]
 
-[node name="GreenBacteria" instance=ExtResource( "1_cnqw2" )]
+[node name="GreenBacteria" instance=ExtResource("1_cnqw2")]
 
 [node name="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(0.599517, 0, 0.0240791, 0, 0.6, 0, -0.0240791, 0, 0.599517, 0, 0, 0)
+transform = Transform3D(0.449637, 0, 0.0180593, 0, 0.45, 0, -0.0180593, 0, 0.449637, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "spawn"

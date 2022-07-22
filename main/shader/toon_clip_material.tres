@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://5xoyqfb367i6"]
 
-[ext_resource type="Shader" uid="uid://bpgxibqtst10x" path="res://main/shader/toon_clip.tres" id="1_y3a6k"]
+[ext_resource type="Shader" uid="uid://d3x6coqsvv3d" path="res://main/shader/toon_clip.tres" id="1_y3a6k"]
 
 [resource]
 render_priority = 8

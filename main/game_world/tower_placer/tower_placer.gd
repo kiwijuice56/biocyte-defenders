@@ -5,6 +5,7 @@ class_name TowerPlacer
 @export var mouse_catcher: MeshInstance3D
 @export var tower_file_paths: Array[String]
 
+var towers: Array[Tower]
 var tower_to_place: Tower
 
 func _ready() -> void:
@@ -12,8 +13,11 @@ func _ready() -> void:
 	# Cache towers in memory
 	for tower_file_path in tower_file_paths:
 		var tower: Tower = load(tower_file_path).instantiate()
+		tower.visible = false
 		add_child(tower)
-		tower.queue_free()
+		# Move out of range
+		tower.position.y = -1000 
+		towers.append(tower)
 
 # When placing a tower, move it to the mouse position
 func _process(_delta: float) -> void:
@@ -24,9 +28,11 @@ func _process(_delta: float) -> void:
 
 # Initialize a tower and prepare it for placement
 func create_tower(id: int) -> void:
-	var new_tower: Tower = load(tower_file_paths[id]).instantiate()
+	var new_tower: Tower = towers[id].duplicate()
 	tower_to_place = new_tower
 	add_child(new_tower)
+	
+	new_tower.initialize()
 	
 	new_tower.position.y = -1
 	new_tower.range_visible = true
@@ -39,5 +45,4 @@ func place_tower() -> void:
 	if not tower_to_place.valid_placement:
 		tower_to_place.call_deferred("queue_free")
 		return
-	tower_to_place.range_visible = false
-	tower_to_place.active = true
+	tower_to_place.place()

@@ -1,22 +1,76 @@
-[gd_scene load_steps=9 format=3 uid="uid://cp5w2wsir6u8w"]
+[gd_scene load_steps=18 format=3 uid="uid://cp5w2wsir6u8w"]
 
 [ext_resource type="Script" path="res://main/game_world/enemy/enemy.gd" id="1_mtamk"]
 [ext_resource type="Texture2D" uid="uid://cvba5q0282e7" path="res://main/game_world/enemy/green_bacteria/green_bacteria.png" id="2_6gnhh"]
+[ext_resource type="Shader" path="res://main/shader/dissolve.gdshader" id="2_f3uk4"]
+[ext_resource type="PlaneMesh" uid="uid://btff3buuqfjnb" path="res://main/shader/circle_plane_mesh.tres" id="4_itykb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3ik4l"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgb52"]
-transparency = 2
-alpha_scissor_threshold = 0.05
-alpha_antialiasing_mode = 0
-shading_mode = 0
-albedo_texture = ExtResource("2_6gnhh")
-texture_filter = 0
+[sub_resource type="Gradient" id="Gradient_k4751"]
+offsets = PackedFloat32Array(0.0133333, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1.5, 1.5, 1.5, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8aoee"]
+gradient = SubResource("Gradient_k4751")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b1fxi"]
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_n03cg"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_b1fxi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxya6"]
+render_priority = 0
+shader = ExtResource("2_f3uk4")
+shader_param/burn_ramp = SubResource("GradientTexture2D_8aoee")
+shader_param/burn_size = 0.804
+shader_param/noise_tex = SubResource("NoiseTexture_n03cg")
+shader_param/texure = ExtResource("2_6gnhh")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_donsf"]
 
 [sub_resource type="Animation" id="Animation_gjenc"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:shader_params/burn_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:shader_params/alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_yrptv"]
 resource_name = "bob"
@@ -33,26 +87,110 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2)
 }
 
+[sub_resource type="Animation" id="Animation_5qgen"]
+resource_name = "pop"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:shader_params/burn_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0, 1.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"spawn_started"],
+"method": &"emit_signal"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_y61q8"]
+resource_name = "spawn"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:shader_params/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kw6u4"]
 _data = {
 "RESET": SubResource("Animation_gjenc"),
-"bob": SubResource("Animation_yrptv")
+"bob": SubResource("Animation_yrptv"),
+"pop": SubResource("Animation_5qgen"),
+"spawn": SubResource("Animation_y61q8")
 }
+
+[sub_resource type="Curve" id="Curve_3sy3u"]
+_data = [Vector2(0.00907043, 0.692457), 0.0, 0.0, 0, 0, Vector2(0.989796, 0), 0.24692, 0.0, 0, 0]
+point_count = 2
 
 [node name="Enemy" type="Area3D"]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("1_mtamk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_3ik4l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.999211, 0, 0.0397056, 0, 1, 0, -0.0397056, 0, 0.999211, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_lgb52")
+transform = Transform3D(0.494386, 0, 0.074719, 0, 0.5, 0, -0.074719, 0, 0.494386, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_cxya6")
+shader_params/alpha = 1.0
+shader_params/burn_position = -1.0
 mesh = SubResource("PlaneMesh_donsf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_kw6u4")
 }
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+emitting = false
+amount = 18
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.25
+explosiveness = 0.92
+mesh = ExtResource("4_itykb")
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0, 16)
+initial_velocity_min = 3.0
+initial_velocity_max = 16.0
+scale_amount_curve = SubResource("Curve_3sy3u")

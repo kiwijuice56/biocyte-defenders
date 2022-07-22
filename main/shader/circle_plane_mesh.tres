@@ -1,0 +1,14 @@
+[gd_resource type="PlaneMesh" load_steps=3 format=3 uid="uid://btff3buuqfjnb"]
+
+[ext_resource type="Texture2D" uid="uid://cuuo63tg2o1ys" path="res://main/shader/circle.png" id="1_sula6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_advtw"]
+render_priority = 10
+transparency = 1
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+albedo_texture = ExtResource("1_sula6")
+
+[resource]
+material = SubResource("StandardMaterial3D_advtw")

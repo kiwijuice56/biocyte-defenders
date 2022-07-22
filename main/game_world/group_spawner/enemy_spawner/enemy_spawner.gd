@@ -21,9 +21,7 @@ func initialize(group: EnemyGroup, path: Path3D) -> void:
 	enemy_spawn_timer.start(group.delay)
 
 func spawn_enemy() -> void:
-	var path_follow: PathFollow3D = PathFollow3D.new()
-	path_follow.cubic_interp = false
-	path_follow.rotation_mode = PathFollow3D.ROTATION_NONE
+	var path_follow: PathFollow3D = create_path_follow()
 	
 	var new_enemy = group.enemy_scene.instantiate()
 	
@@ -35,3 +33,9 @@ func spawn_enemy() -> void:
 		enemy_spawn_timer.start(group.delay)
 	else:
 		queue_free()
+
+static func create_path_follow() -> PathFollow3D:
+	var path_follow: PathFollow3D = PathFollow3D.new()
+	path_follow.cubic_interp = false
+	path_follow.rotation_mode = PathFollow3D.ROTATION_NONE
+	return path_follow
