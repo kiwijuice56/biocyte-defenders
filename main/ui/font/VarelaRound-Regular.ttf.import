@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontData"
 uid="uid://df85fhgrtp3nr"
-path="res://.godot/imported/VarelaRound-Regular.ttf-cc5261dd13320a3c1e457ef4e4db4498.fontdata"
+path="res://.godot/imported/VarelaRound-Regular.ttf-32c58c2264c4112d56c1df53dc3b2941.fontdata"
 
 [deps]
 
-source_file="res://main/ui/VarelaRound-Regular.ttf"
-dest_files=["res://.godot/imported/VarelaRound-Regular.ttf-cc5261dd13320a3c1e457ef4e4db4498.fontdata"]
+source_file="res://main/ui/font/VarelaRound-Regular.ttf"
+dest_files=["res://.godot/imported/VarelaRound-Regular.ttf-32c58c2264c4112d56c1df53dc3b2941.fontdata"]
 
 [params]
 

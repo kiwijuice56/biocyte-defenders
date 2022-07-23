@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bag4fu33cm8x7"
-path="res://.godot/imported/flat_panel.png-6f56e5e2bf1e6f45caeb36772fdc5244.ctex"
+uid="uid://cn5x4yjbdoai5"
+path="res://.godot/imported/tower_button.png-488a85c4de40de7831baeaf3a22492c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/ui/flat_panel.png"
-dest_files=["res://.godot/imported/flat_panel.png-6f56e5e2bf1e6f45caeb36772fdc5244.ctex"]
+source_file="res://main/ui/overlay_ui/panels/tower_button.png"
+dest_files=["res://.godot/imported/tower_button.png-488a85c4de40de7831baeaf3a22492c6.ctex"]
 
 [params]
 

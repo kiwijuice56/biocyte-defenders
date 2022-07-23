@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j0l5spvk52mr"
-path="res://.godot/imported/panel.png-e3122252243c4d0edd95effd27a836dc.ctex"
+uid="uid://cxc5iwrqk8xd1"
+path="res://.godot/imported/tcell.png-1fcb2b00f834b6f5bb49583e935642fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/ui/panel.png"
-dest_files=["res://.godot/imported/panel.png-e3122252243c4d0edd95effd27a836dc.ctex"]
+source_file="res://main/ui/overlay_ui/icons/tower_icons/tcell.png"
+dest_files=["res://.godot/imported/tcell.png-1fcb2b00f834b6f5bb49583e935642fd.ctex"]
 
 [params]
 

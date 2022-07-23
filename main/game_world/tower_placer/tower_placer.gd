@@ -7,9 +7,17 @@ class_name TowerPlacer
 
 var towers: Array[Tower]
 var tower_to_place: Tower
+var selected_tower: Tower
 
 func _ready() -> void:
 	set_process(false)
+	set_process_input(false)
+	
+	# PointerArea is not loaded at this point
+	await mouse_catcher.ready
+	mouse_catcher.pointer_area.connect("tower_clicked", tower_clicked)
+	mouse_catcher.pointer_area.connect("focus_lost", focus_lost)
+	
 	# Cache towers in memory
 	for tower_file_path in tower_file_paths:
 		var tower: Tower = load(tower_file_path).instantiate()
@@ -25,6 +33,19 @@ func _process(_delta: float) -> void:
 		tower_to_place.position = mouse_catcher.mouse_position
 		tower_to_place.position.y += 0.5
 		tower_to_place.valid_placement = tower_to_place.colliding_count == 0
+
+func _input(event: InputEvent) -> void:
+	if not selected_tower:
+		return
+	var tower_upgrades: Array = selected_tower.upgrades.duplicate()
+	if event.is_action_pressed("upgrade_first", false):
+		selected_tower.upgrades[0] += 1
+	if event.is_action_pressed("upgrade_second", false):
+		selected_tower.upgrades[1] += 1
+	if event.is_action_pressed("upgrade_third", false):
+		selected_tower.upgrades[2] += 1
+	if tower_upgrades != selected_tower.upgrades:
+		selected_tower.update_upgrade_status()
 
 # Initialize a tower and prepare it for placement
 func create_tower(id: int) -> void:
@@ -46,3 +67,13 @@ func place_tower() -> void:
 		tower_to_place.call_deferred("queue_free")
 		return
 	tower_to_place.place()
+
+func tower_clicked(tower: Tower) -> void:
+	selected_tower = tower
+	selected_tower.range_visible = true
+	set_process_input(true)
+
+func focus_lost() -> void:
+	if selected_tower:
+		selected_tower.range_visible = false
+	set_process_input(false)

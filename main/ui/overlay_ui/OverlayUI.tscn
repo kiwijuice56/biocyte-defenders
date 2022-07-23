@@ -1,16 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://cwj7aq3qo3l5m"]
+[gd_scene load_steps=19 format=3 uid="uid://b2g8oyjiv0l56"]
 
-[ext_resource type="Theme" uid="uid://b0n5ckcmrige" path="res://main/ui/GlobalTheme.tres" id="1_e5dad"]
-[ext_resource type="Script" path="res://main/ui/tower_grid_container.gd" id="2_s8dlc"]
-[ext_resource type="Texture2D" uid="uid://b16jqoqxtj6qt" path="res://main/ui/overlay_ui/dna_icon.png" id="2_vead7"]
-[ext_resource type="Texture2D" uid="uid://6ke0nts5jurw" path="res://main/ui/overlay_ui/heart.png" id="3_koan6"]
+[ext_resource type="Theme" path="res://main/ui/global_theme.tres" id="1_f456x"]
+[ext_resource type="Texture2D" uid="uid://6ke0nts5jurw" path="res://main/ui/overlay_ui/icons/health_icon.png" id="2_dlxdh"]
+[ext_resource type="Texture2D" uid="uid://b16jqoqxtj6qt" path="res://main/ui/overlay_ui/icons/dna_icon.png" id="3_08615"]
 [ext_resource type="Texture2D" uid="uid://8cbk23x3iwaq" path="res://icon.png" id="3_saqkh"]
-[ext_resource type="Texture2D" uid="uid://bh4tcpjm2rkt2" path="res://main/ui/overlay_ui/upgrade_button.png" id="5_8vlna"]
-[ext_resource type="Texture2D" uid="uid://bag4fu33cm8x7" path="res://main/ui/flat_panel.png" id="6_0dajs"]
-[ext_resource type="Texture2D" uid="uid://j0l5spvk52mr" path="res://main/ui/panel.png" id="7_g1b13"]
-[ext_resource type="Texture2D" uid="uid://cn5x4yjbdoai5" path="res://main/ui/tower_button.png" id="8_m4wdn"]
-[ext_resource type="Texture2D" uid="uid://cxc5iwrqk8xd1" path="res://main/ui/icon2.png" id="9_ko73l"]
-[ext_resource type="Script" path="res://main/ui/fps_label.gd" id="10_sjusr"]
+[ext_resource type="Texture2D" uid="uid://bh4tcpjm2rkt2" path="res://main/ui/overlay_ui/panels/upgrade_button.png" id="5_7aary"]
+[ext_resource type="Texture2D" uid="uid://bag4fu33cm8x7" path="res://main/ui/overlay_ui/panels/tower_select_panel.png" id="6_0sjbf"]
+[ext_resource type="Texture2D" uid="uid://j0l5spvk52mr" path="res://main/ui/overlay_ui/panels/panel.png" id="7_fcmsn"]
+[ext_resource type="Script" path="res://main/ui/overlay_ui/tower_grid_container.gd" id="8_h5urn"]
+[ext_resource type="Texture2D" uid="uid://cn5x4yjbdoai5" path="res://main/ui/overlay_ui/panels/tower_button.png" id="9_lysnr"]
+[ext_resource type="Texture2D" uid="uid://cxc5iwrqk8xd1" path="res://main/ui/overlay_ui/icons/tower_icons/tcell.png" id="10_l7lpp"]
+[ext_resource type="Script" path="res://main/ui/overlay_ui/fps_label.gd" id="11_5ry6w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaqwy"]
 content_margin_left = 8.0
@@ -35,7 +35,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1wjjn"]
-texture = ExtResource("6_0dajs")
+texture = ExtResource("6_0sjbf")
 region_rect = Rect2(0, 0, 414, 1253)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yhdfr"]
@@ -43,7 +43,7 @@ content_margin_left = 8.0
 content_margin_top = 8.0
 content_margin_right = 2.0
 content_margin_bottom = 6.0
-texture = ExtResource("7_g1b13")
+texture = ExtResource("7_fcmsn")
 margin_left = 8.0
 margin_top = 7.0
 region_rect = Rect2(0, 0, 167, 184)
@@ -55,7 +55,7 @@ content_margin_right = 4.0
 content_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2e52c"]
-texture = ExtResource("7_g1b13")
+texture = ExtResource("7_fcmsn")
 margin_left = 8.0
 margin_top = 7.0
 margin_right = 5.0
@@ -63,7 +63,7 @@ margin_bottom = 4.0
 region_rect = Rect2(0, 0, 167, 184)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8vx0i"]
-texture = ExtResource("8_m4wdn")
+texture = ExtResource("9_lysnr")
 region_rect = Rect2(0, 0, 73, 84)
 
 [node name="OverlayUI" type="Control"]
@@ -72,7 +72,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-theme = ExtResource("1_e5dad")
+theme = ExtResource("1_f456x")
 metadata/_edit_vertical_guides_ = []
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -92,7 +92,7 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer"]
+[node name="StatusIconContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer"]
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 197.0
@@ -101,21 +101,21 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/separation = 32
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Health" type="HBoxContainer" parent="HBoxContainer/MarginContainer/StatusIconContainer"]
 offset_right = 75.0
 offset_bottom = 44.0
 theme_override_constants/separation = -13
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer/StatusIconContainer/Health"]
 texture_filter = 2
 offset_top = 3.0
 offset_right = 43.0
 offset_bottom = 40.0
 size_flags_vertical = 4
-texture = ExtResource("3_koan6")
+texture = ExtResource("2_dlxdh")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/StatusIconContainer/Health"]
 offset_left = 30.0
 offset_top = 5.0
 offset_right = 75.0
@@ -125,20 +125,20 @@ theme_override_constants/outline_size = 9
 theme_override_font_sizes/font_size = 24
 text = "150"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Dna" type="HBoxContainer" parent="HBoxContainer/MarginContainer/StatusIconContainer"]
 offset_left = 107.0
 offset_right = 193.0
 offset_bottom = 44.0
 theme_override_constants/separation = -13
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer/StatusIconContainer/Dna"]
 texture_filter = 2
 offset_right = 39.0
 offset_bottom = 44.0
-texture = ExtResource("2_vead7")
+texture = ExtResource("3_08615")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/StatusIconContainer/Dna"]
 offset_left = 26.0
 offset_top = 5.0
 offset_right = 86.0
@@ -222,7 +222,7 @@ size_flags_horizontal = 3
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/Status/PanelContainer/VBoxContainer/HBoxContainer/Control"]
 offset_right = 248.0
 offset_bottom = 96.0
-texture = ExtResource("5_8vlna")
+texture = ExtResource("5_7aary")
 stretch_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/Status/PanelContainer/VBoxContainer/HBoxContainer/Control"]
@@ -265,7 +265,7 @@ size_flags_horizontal = 3
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/Status/PanelContainer/VBoxContainer/HBoxContainer2/Control"]
 offset_right = 248.0
 offset_bottom = 96.0
-texture = ExtResource("5_8vlna")
+texture = ExtResource("5_7aary")
 stretch_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/Status/PanelContainer/VBoxContainer/HBoxContainer2/Control"]
@@ -308,7 +308,7 @@ size_flags_horizontal = 3
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/Status/PanelContainer/VBoxContainer/HBoxContainer3/Control"]
 offset_right = 248.0
 offset_bottom = 96.0
-texture = ExtResource("5_8vlna")
+texture = ExtResource("5_7aary")
 stretch_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/Status/PanelContainer/VBoxContainer/HBoxContainer3/Control"]
@@ -402,7 +402,7 @@ size_flags_vertical = 0
 theme_override_constants/h_separation = 3
 theme_override_constants/v_separation = 5
 columns = 2
-script = ExtResource("2_s8dlc")
+script = ExtResource("8_h5urn")
 
 [node name="Button2" type="Button" parent="HBoxContainer/TowerSelection/MarginContainer/VBoxContainer/TowerPanelContainer/TowerGridContainer"]
 custom_minimum_size = Vector2(73, 84)
@@ -439,9 +439,9 @@ offset_left = -32.5
 offset_top = -21.5
 offset_right = 32.5
 offset_bottom = 21.5
-texture = ExtResource("9_ko73l")
+texture = ExtResource("10_l7lpp")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
-script = ExtResource("10_sjusr")
+script = ExtResource("11_5ry6w")

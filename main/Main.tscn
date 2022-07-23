@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://xko4d3g7eyk0"]
 
 [ext_resource type="Script" path="res://main/game_world/tower_placer/tower_placer.gd" id="3_ntu86"]
-[ext_resource type="PackedScene" uid="uid://cwj7aq3qo3l5m" path="res://main/ui/overlay_ui/OverlayUI.tscn" id="4_k4sog"]
+[ext_resource type="PackedScene" uid="uid://b2g8oyjiv0l56" path="res://main/ui/overlay_ui/OverlayUI.tscn" id="4_k4sog"]
 [ext_resource type="PackedScene" uid="uid://b1ipl2m4js35" path="res://main/game_world/mouse_catcher/MouseCatcher.tscn" id="4_nsaro"]
 [ext_resource type="Script" path="res://main/game_world/game_world.gd" id="5_ahbuc"]
 [ext_resource type="Script" path="res://main/game_world/group_spawner/group_spawner.gd" id="6_2kuun"]
@@ -45,6 +45,7 @@ name_enemy_path_map = {
 [node name="GroupSpawnTimer" type="Timer" parent="World/GroupSpawner"]
 
 [node name="MouseCatcher" parent="World" instance=ExtResource("4_nsaro")]
+visible = false
 camera_path = NodePath("../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="World"]

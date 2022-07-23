@@ -132,3 +132,6 @@ func update_upgrade_status() -> void:
 	model = base_model.instantiate()
 	add_child(model)
 	move_child(model, 0) # Model should be lower than other particle effect children
+
+func _to_string() -> String:
+	return "%s: %s" % [name, upgrades]

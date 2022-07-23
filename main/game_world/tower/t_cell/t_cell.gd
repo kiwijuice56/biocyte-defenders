@@ -5,7 +5,7 @@ var color_boost: float = 1.35
 
 func update_upgrade_status() -> void:
 	super.update_upgrade_status()
-	
+	model.palette["nucl"] = [Color("5fccff"), Color("4dbf8b")]
 	model.main_model_name = "tier1-0"
 	model.main_model_shoot_anim = "t1shoot"
 	
@@ -18,6 +18,15 @@ func update_upgrade_status() -> void:
 	for i in range(len(upgrades)):
 		if not i == highest_path and upgrades[i] > upgrades[second_path]:
 			second_path = i
+	
+	if upgrades[highest_path] > 0:
+		if upgrades[highest_path] > 0:
+			if second_path == 2 and upgrades[second_path] > 1:
+				model.main_model_shoot_anim = "t%dsursshoot" % upgrades[highest_path]
+			else:
+				model.main_model_shoot_anim = "t%dshoot" % upgrades[highest_path]
+		if highest_path == 2 and upgrades[highest_path] > 1:
+			model.main_model_shoot_anim = "t%dsurshoot" % upgrades[highest_path]
 	
 	# Color nucleus as secondary path if at or above tier 3
 	if upgrades[second_path] > 0 and upgrades[highest_path] >= 3:

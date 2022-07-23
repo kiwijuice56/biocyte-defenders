@@ -8,6 +8,8 @@ signal mouse_exited
 @export var camera_path: NodePath
 @export var ray_length: int = 32
 
+@onready var pointer_area: Area3D = get_node("PointerArea")
+
 var cam: Camera3D
 
 var mouse_position: Vector3
@@ -31,6 +33,7 @@ func _input(event) -> void:
 	var result: Dictionary = space_state.intersect_ray(ray_query)
 	if "position" in result:
 		mouse_position = result["position"]
+		pointer_area.global_transform.origin = result["position"]
 		if not mouse_caught:
 			emit_signal("mouse_entered")
 	elif mouse_caught:

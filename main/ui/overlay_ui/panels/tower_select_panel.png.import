@@ -2,26 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt88wyol2lxmb"
-path="res://.godot/imported/rim_edge.png-5135b673c87d62972ce8d8e161f98882.ctex"
+uid="uid://bag4fu33cm8x7"
+path="res://.godot/imported/tower_select_panel.png-5d276ec6dc31753bc758745c09b3a0bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/ui/rim_edge.png"
-dest_files=["res://.godot/imported/rim_edge.png-5135b673c87d62972ce8d8e161f98882.ctex"]
+source_file="res://main/ui/overlay_ui/panels/tower_select_panel.png"
+dest_files=["res://.godot/imported/tower_select_panel.png-5d276ec6dc31753bc758745c09b3a0bc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
